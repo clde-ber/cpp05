@@ -1,2 +1,3 @@
 objs/RobotomyRequestForm.o: srcs/RobotomyRequestForm.cpp \
-  includes/RobotomyRequestForm.hpp includes/Form.hpp
+  includes/RobotomyRequestForm.hpp includes/Form.hpp \
+  includes/Bureaucrat.hpp

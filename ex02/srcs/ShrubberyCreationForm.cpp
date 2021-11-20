@@ -4,16 +4,22 @@
 ShrubberyCreationForm::ShrubberyCreationForm() : _target("none")
 {
     _trees = "                                   _\\ |/ /   _\\ |/ /   _\\ |/ /      \\/\\|//_   \\/\\|//_   \\/\\|//_      _\\/|//_   _\\/|//_   _\\/|//_        \\|/       \\|/       \\|/           |         |         |            |         |         |                                        ";
+    this->setGradeReqSign(145);
+    this->setGradeReqExe(137);
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string const target) : _target(target)
 {
     _trees = "                                   _\\ |/ /   _\\ |/ /   _\\ |/ /      \\/\\|//_   \\/\\|//_   \\/\\|//_      _\\/|//_   _\\/|//_   _\\/|//_        \\|/       \\|/       \\|/           |         |         |            |         |         |                                        ";
+    this->setGradeReqSign(145);
+    this->setGradeReqExe(137);
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm( ShrubberyCreationForm const & rhs) : _target(rhs._target)
 {
     _trees = rhs._trees;
+    this->setGradeReqSign(rhs.getGradeReqSign());
+    this->setGradeReqExe(rhs.getGradeReqExe());
 }
 
 ShrubberyCreationForm const & ShrubberyCreationForm::operator=(ShrubberyCreationForm const & rhs) const

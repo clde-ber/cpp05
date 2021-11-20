@@ -31,6 +31,21 @@ std::string const AForm::getName() const
     return this->_name;
 }
 
+void AForm::setIfSigned(int boolean)
+{
+    this->_signed = boolean;
+}
+
+void AForm::setGradeReqSign(int grade)
+{
+    this->_gradeReqSign = grade;
+}
+
+void AForm::setGradeReqExe(int grade)
+{
+    this->_gradeReqExe = grade;
+}
+
 int AForm::getIfSigned() const
 {
     return this->_signed;

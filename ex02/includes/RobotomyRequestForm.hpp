@@ -3,6 +3,8 @@
 
 #include <string>
 #include <iostream>
+#include <cstdlib>
+#include <cstring>
 
 #include "Form.hpp"
 

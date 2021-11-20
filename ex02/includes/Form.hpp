@@ -45,15 +45,18 @@ class AForm
         AForm const & operator=(AForm const & rhs) const;
         virtual ~AForm();
         std::string const getName() const;
+        void setIfSigned(int boolean);
+        void setGradeReqSign(int grade);
+        void setGradeReqExe(int grade);
         int getIfSigned() const;
         int getGradeReqSign() const;
         int getGradeReqExe() const;
         int beSigned(Bureaucrat* bureaucrat) const;
         void signForm(Bureaucrat* bureaucrat);
         virtual void execute (Bureaucrat const & executor) const = 0;
-    /*    class ShrubberyCreationForm; // (Grades requis : signature 145, execution 137)
-        class RobotomyRequestForm; //(Grades requis : signature 72, execution 45)
-        class PresidentialPardonForm; //(Grades requis : signature 25, execution 5)*/
+        // (Grades requis : signature 145, execution 137)
+         //(Grades requis : signature 72, execution 45)
+         //(Grades requis : signature 25, execution 5)*/
 };
 
 std::ostream & operator<<(std::ostream & o, AForm* const & rhs);
