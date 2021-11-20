@@ -37,7 +37,7 @@ int main()
             test->GradeTooLowException();
     }
     Form* paper = new Form(0, 4, 3);
-        try
+    try
     {
         if (!(paper->getGradeReqSign() > 1 && paper->getGradeReqSign() < 150 \
         && paper->getGradeReqExe() > 1 && paper->getGradeReqExe() < 150))
