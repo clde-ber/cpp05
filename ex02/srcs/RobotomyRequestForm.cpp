@@ -31,21 +31,22 @@ RobotomyRequestForm::~RobotomyRequestForm()
 
 void RobotomyRequestForm::execute (Bureaucrat const & executor) const
 {
-    if (this->getIfSigned() && executor.getGrade() <= this->getGradeReqExe())
-    {
-        const char* file = "rain.wav";
-        char toJoin[255];
-        memset(toJoin, 0, std::strlen(toJoin));
-        char* pre = std::strcat(toJoin, "aplay -d 4 ");
-        const char *command = std::strcat(pre, file);
-        std::cout << command << std::endl;
-        system(command);
-    }
-    else
+    try
     {
         if (this->getIfSigned() == 0)
             throw AForm::UnsignedException();
         else if (executor.getGrade() > this->getGradeReqExe())
             throw AForm::GradeTooLowException();
     }
+    catch (const std::exception& e)
+    {
+        std::cout << e.what() << std::endl;
+    }
+    const char* file = "rain.wav";
+    char toJoin[255];
+    memset(toJoin, 0, std::strlen(toJoin));
+    char* pre = std::strcat(toJoin, "aplay -d 4 ");
+    const char *command = std::strcat(pre, file);
+    std::cout << command << std::endl;
+    system(command);
 }

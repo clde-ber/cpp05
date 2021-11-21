@@ -29,9 +29,12 @@ int main()
     ShrubberyCreationForm* sForm = new ShrubberyCreationForm(test->getName());
     RobotomyRequestForm* rForm = new RobotomyRequestForm(test->getName());
     PresidentialPardonForm* pForm = new PresidentialPardonForm(test->getName());
-    sForm->ShrubberyCreationForm::execute(*test);
-    rForm->RobotomyRequestForm::execute(*test);
-    pForm->PresidentialPardonForm::execute(*test);
+    sForm->ShrubberyCreationForm::execute(*gradeTooHigh);
+    rForm->RobotomyRequestForm::execute(*gradeTooHigh);
+    pForm->PresidentialPardonForm::execute(*gradeTooHigh);
+    sForm->ShrubberyCreationForm::execute(*gradeTooLow);
+    rForm->RobotomyRequestForm::execute(*gradeTooLow);
+    pForm->PresidentialPardonForm::execute(*gradeTooLow);
     sForm->signForm(test);
     rForm->signForm(test);
     pForm->signForm(test);
@@ -51,5 +54,10 @@ int main()
     rForm->RobotomyRequestForm::execute(*gradeTooLow);
     pForm->PresidentialPardonForm::execute(*gradeTooLow);
     delete test;
+    delete gradeTooHigh;
+    delete gradeTooLow;
+    delete sForm;
+    delete rForm;
+    delete pForm;
     return 0;
 }

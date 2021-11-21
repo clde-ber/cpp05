@@ -34,6 +34,17 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 
 void ShrubberyCreationForm::execute (Bureaucrat const & executor) const
 {
+    try
+    {
+        if (this->getIfSigned() == 0)
+            throw AForm::UnsignedException();
+        else if (executor.getGrade() > this->getGradeReqExe())
+            throw AForm::GradeTooLowException();
+    }
+    catch (const std::exception& e)
+    {
+        std::cout << e.what() << std::endl;
+    }
     if (this->getIfSigned() && executor.getGrade() <= this->getGradeReqExe())
     {
         for (int i = 0; i < 8; i++)
@@ -44,12 +55,5 @@ void ShrubberyCreationForm::execute (Bureaucrat const & executor) const
             }
             std::cout << std::endl;
         }
-    }
-    else
-    {
-        if (this->getIfSigned() == 0)
-            throw AForm::UnsignedException();
-        else if (executor.getGrade() > this->getGradeReqExe())
-            throw AForm::GradeTooLowException();
     }
 }
