@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <string>
-
+#include <exception>
 #include "Form.hpp"
 
 class ShrubberyCreationForm;
@@ -12,7 +12,7 @@ class PresidentialPardonForm;
 
 class Bureaucrat
 {
-    protected:
+    private:
         std::string const _name;
         int _grade;
     protected:

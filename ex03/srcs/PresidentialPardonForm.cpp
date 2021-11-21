@@ -34,14 +34,19 @@ void PresidentialPardonForm::execute (Bureaucrat const & executor) const
 {
     try
     {
+        if (executor.getGrade() < 1)
+            throw AForm::GradeTooHighException();
+        if (executor.getGrade() > 150 or executor.getGrade() > this->getGradeReqExe())
+            throw AForm::GradeTooLowException();
         if (this->getIfSigned() == 0)
             throw AForm::UnsignedException();
-        else if (executor.getGrade() > this->getGradeReqExe() or (executor.getGrade() < 1 and executor.getGrade() > 150))
-            throw AForm::GradeTooLowException();
+        else
+        {
+             std::cout << executor.getName() << " has been forgiven by Zafod Beeblebrox!" << std::endl;
+        }  
     }
     catch (const std::exception& e)
     {
         std::cout << e.what() << std::endl;
     }
-    std::cout << executor.getName() << " has been forgiven by Zafod Beeblebrox!" << std::endl;
 }

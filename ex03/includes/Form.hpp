@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <exception>
 
 class Bureaucrat;
 
@@ -19,7 +20,7 @@ class AForm
             public:
                 virtual const char* what() const throw()
                 {
-                    return "Too high grade required to sign!";
+                    return "Too high grade required to sign/execute!";
                 }
         };
         class GradeTooLowException : public std::exception
@@ -27,7 +28,15 @@ class AForm
             public:
                 virtual const char* what() const throw()
                 {
-                    return "Too low grade required to sign!";
+                    return "Too low grade required to sign/execute!";
+                }
+        };
+        class GradeReqSignException : public std::exception
+        {
+            public:
+                virtual const char* what() const throw()
+                {
+                    return "Bureaucrat cannot sign/execute because his grade is too low!";
                 }
         };
         class UnsignedException : public std::exception
@@ -38,16 +47,8 @@ class AForm
                     return "This form cannot be executed because it is not signed!";
                 }
         };
-        class GradeReqSignException : public std::exception
-        {
-            public:
-                virtual const char* what() const throw()
-                {
-                    return "Bureaucrat cannot sign because his grade is too low!";
-                }
-        };
     public:
-        AForm();
+        AForm(void);
         AForm(int is_signed, int gradeReqSign, int gradeReqExe);
         AForm( AForm const & rhs);
         AForm const & operator=(AForm const & rhs) const;

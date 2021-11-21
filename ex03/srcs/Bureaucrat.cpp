@@ -1,6 +1,6 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat() : _name(""), _grade(0)
+Bureaucrat::Bureaucrat() : _name("")
 {
 
 }
@@ -44,7 +44,7 @@ void    Bureaucrat::incrementGrade()
         if (this->_grade - 1 > 150)
             throw Bureaucrat::GradeTooLowException();
     }
-    catch(const std::exception &e)
+    catch (const std::exception& e)
     {
         std::cout << e.what() << std::endl;
     }
@@ -54,18 +54,32 @@ void    Bureaucrat::incrementGrade()
 
 void    Bureaucrat::decrementGrade()
 {
+    try
+    {
+        if (this->_grade + 1 < 1)
+            throw Bureaucrat::GradeTooHighException();
+        if (this->_grade + 1 > 150)
+            throw Bureaucrat::GradeTooLowException();
+    }
+    catch (const std::exception& e)
+    {
+        std::cout << e.what() << std::endl;
+    }
     this->_grade++;
 }
 
-void Bureaucrat::executeForm (AForm const & form)
+void Bureaucrat::executeForm(AForm const & form)
 {
-    if (form.getIfSigned() && this->_grade <= form.getGradeReqExe())
-        std::cout << this->_name << " executs " << form.getName() << std::endl;
-    else
+    try
     {
         if (form.getIfSigned() == 0)
             throw Bureaucrat::UnsignedException();
         else if (this->_grade > form.getGradeReqExe())
             throw Bureaucrat::GradeTooLowException();
     }
+    catch (const std::exception& e)
+    {
+        std::cout << e.what() << std::endl;
+    }
+    std::cout << this->_name << " executs " << form.getName() << std::endl;
 }

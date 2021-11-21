@@ -1,7 +1,7 @@
-#include "Form.hpp"
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
-AForm::AForm() : _signed(0), _gradeReqSign(75), _gradeReqExe(25)
+AForm::AForm(void)
 {
 
 }
@@ -73,14 +73,13 @@ void AForm::signForm(Bureaucrat* bureaucrat)
 {
     try
     {
-        if (bureaucrat->getGrade() > this->_gradeReqSign or (bureaucrat->getGrade() < 1 and bureaucrat->getGrade() > 150))
+        if (bureaucrat->getGrade() > this->_gradeReqSign or bureaucrat->getGrade() < 1 or bureaucrat->getGrade() > 150)
             throw AForm::GradeReqSignException();
     }
     catch(const std::exception& e)
     {
         std::cout << e.what() << std::endl;
     }
-    
     if (bureaucrat->getGrade() <= this->_gradeReqSign)
     {
         std::cout << bureaucrat->getName() << " signs " << this->_name << std::endl;

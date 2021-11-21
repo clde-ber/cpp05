@@ -3,9 +3,9 @@
 
 #include <iostream>
 #include <string>
-#include "Form.hpp"
-#include "Bureaucrat.hpp"
 #include <cstring>
+
+class AForm;
 
 class Intern
 {

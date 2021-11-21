@@ -36,24 +36,26 @@ void ShrubberyCreationForm::execute (Bureaucrat const & executor) const
 {
     try
     {
+        if (executor.getGrade() < 1)
+            throw AForm::GradeTooHighException();
+        if (executor.getGrade() > 150 or executor.getGrade() > this->getGradeReqExe())
+            throw AForm::GradeTooLowException();
         if (this->getIfSigned() == 0)
             throw AForm::UnsignedException();
-        else if (executor.getGrade() > this->getGradeReqExe())
-            throw AForm::GradeTooLowException();
+        else
+        {
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 33; j++)
+                {
+                    std::cout << this->_trees[(int)(j + i * 33)];
+                }
+                std::cout << std::endl;
+            }
+        }
     }
     catch (const std::exception& e)
     {
         std::cout << e.what() << std::endl;
-    }
-    if (this->getIfSigned() && executor.getGrade() <= this->getGradeReqExe())
-    {
-        for (int i = 0; i < 8; i++)
-        {
-            for (int j = 0; j < 33; j++)
-            {
-                std::cout << this->_trees[(int)(j + i * 33)];
-            }
-            std::cout << std::endl;
-        }
     }
 }

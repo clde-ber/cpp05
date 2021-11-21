@@ -1,3 +1,3 @@
-objs/Intern.o: srcs/Intern.cpp includes/Intern.hpp includes/Form.hpp \
-  includes/Bureaucrat.hpp includes/ShrubberyCreationForm.hpp \
+objs/Intern.o: srcs/Intern.cpp includes/Intern.hpp \
+  includes/ShrubberyCreationForm.hpp includes/Form.hpp \
   includes/RobotomyRequestForm.hpp includes/PresidentialPardonForm.hpp

@@ -4,11 +4,11 @@
 #include <iostream>
 #include <string>
 
-#include "Form.hpp"
+class AForm;
 
 class Bureaucrat
 {
-    protected:
+    private:
         std::string const _name;
         int _grade;
     protected:
