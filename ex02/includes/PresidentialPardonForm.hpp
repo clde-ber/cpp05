@@ -7,7 +7,7 @@
 
 class Bureaucrat;
 
-class PresidentialPardonForm : public AForm//(Grades requis : signature 25, execution 5)
+class PresidentialPardonForm  : public AForm
 {
     private:
         std::string const _target;

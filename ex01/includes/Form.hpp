@@ -11,21 +11,36 @@ class Form
     private:
         std::string const _name;
         bool _signed;
-        int _gradeReqSign;
-        int _gradeReqExe;
+        int const _gradeReqSign;
+        int const _gradeReqExe;
+        class GradeTooHighException : public std::exception
+        {
+            public:
+                virtual const char* what() const throw()
+                {
+                    return "Form exception : Too high grade!";
+                }
+        };
+        class GradeTooLowException : public std::exception
+        {
+            public:
+                virtual const char* what() const throw()
+                {
+                    return "Form exception : Too low grade!";
+                }
+        };
     public:
         Form();
-        Form(int is_signed, int gradeReqSign, int gradeReqExe);
+        Form(std::string const name, int is_signed, int const gradeReqSign, int const gradeReqExe);
         Form( Form const & rhs);
         Form const & operator=(Form const & rhs) const;
         ~Form();
         int getIfSigned() const;
         int getGradeReqSign() const;
         int getGradeReqExe() const;
-        int beSigned(Bureaucrat* & bureaucrat) const;
-        void signForm(Bureaucrat* & bureaucrat);
-        void GradeTooHighException();
-        void GradeTooLowException();
+        int beSigned(Bureaucrat & bureaucrat) const;
+        void signForm(Bureaucrat & bureaucrat);
+        int checkValue(int grade);
 };
 
 std::ostream & operator<<(std::ostream & o, Form* const & rhs);

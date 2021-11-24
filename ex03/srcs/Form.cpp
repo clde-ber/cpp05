@@ -26,22 +26,22 @@ AForm::~AForm()
 
 }
 
-std::string const AForm::getName() const
+void AForm::getName(std::string const name)
 {
-    return this->_name;
+    this->_name = name;
 }
 
-void AForm::setIfSigned(int boolean)
+void AForm::setIfSigned(int isSigned)
 {
-    this->_signed = boolean;
+    this->_signed = isSigned;
 }
 
-void AForm::setGradeReqSign(int grade)
+void AForm::setGradeReqSign(int const grade)
 {
     this->_gradeReqSign = grade;
 }
 
-void AForm::setGradeReqExe(int grade)
+void AForm::setGradeReqExe(int const grade)
 {
     this->_gradeReqExe = grade;
 }

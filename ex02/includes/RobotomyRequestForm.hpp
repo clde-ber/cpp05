@@ -5,12 +5,11 @@
 #include <iostream>
 #include <cstdlib>
 #include <cstring>
-
 #include "Form.hpp"
 
 class Bureaucrat;
 
-class RobotomyRequestForm : public AForm//(Grades requis : signature 72, execution 45)
+class RobotomyRequestForm : public AForm
 {
     private:
         std::string const _target;

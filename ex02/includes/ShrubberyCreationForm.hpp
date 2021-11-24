@@ -3,7 +3,6 @@
 
 #include <string>
 #include <iostream>
-
 #include "Form.hpp"
 
 class Bureaucrat;
@@ -20,6 +19,6 @@ class ShrubberyCreationForm : public AForm
         ShrubberyCreationForm const & operator=(ShrubberyCreationForm const & rhs) const;
         ~ShrubberyCreationForm();
         void execute (Bureaucrat const & executor) const;
-}; // (Grades requis : signature 145, execution 137)
+};
 
 #endif

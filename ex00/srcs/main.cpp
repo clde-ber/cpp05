@@ -1,75 +1,40 @@
 #include "Bureaucrat.hpp"
 
-std::ostream & operator<<(std::ostream & o, Bureaucrat* const & rhs)
-{
-    o << rhs->getName() << ", bureaucrat grade " << rhs->getGrade();
-    return o;
-}
-
 int main()
 {
-    Bureaucrat* test = new Bureaucrat("test", 151);
+    Bureaucrat* test1 = new Bureaucrat("test1", 151);
     try
     {
-        if (!(test->getGrade() > 1 && test->getGrade() < 150))
-            throw std::exception();
-        else
-        {
-            test->incrementGrade();
-            std::cout << test << std::endl;
-            test->decrementGrade();
-            std::cout << test << std::endl;
-        }    
+        test1->decrementGrade();
     }
     catch (std::exception & e)
     {
-        if (test->getGrade() < 1)
-            test->GradeTooHighException();
-        else
-            test->GradeTooLowException();
+        std::cout << e.what() << std::endl;
     }
-    delete test;
-    test = new Bureaucrat("test", 0);
+    delete test1;
+    Bureaucrat* test2 = new Bureaucrat("test2", 0);
     try
     {
-        if (!(test->getGrade() > 1 && test->getGrade() < 150))
-            throw std::exception();
-        else
-        {
-            test->incrementGrade();
-            std::cout << test << std::endl;
-            test->decrementGrade();
-            std::cout << test << std::endl;
-        }    
+        test2->incrementGrade();    
     }
     catch (std::exception & e)
     {
-        if (test->getGrade() < 1)
-            test->GradeTooHighException();
-        else
-            test->GradeTooLowException();
+        std::cout << e.what() << std::endl;
     }
-    delete test;
-    test = new Bureaucrat("test", 5);
+    delete test2;
+    Bureaucrat* test3 = new Bureaucrat("test3", 5);
     try
     {
-        if (!(test->getGrade() > 1 && test->getGrade() < 150))
-            throw std::exception();
-        else
-        {
-            test->incrementGrade();
-            std::cout << test << std::endl;
-            test->decrementGrade();
-            std::cout << test << std::endl;
-        }    
+        test3->incrementGrade();
+        test3->incrementGrade();
+        test3->incrementGrade();
+        test3->incrementGrade();
+        test3->incrementGrade(); 
     }
     catch (std::exception & e)
     {
-        if (test->getGrade() < 1)
-            test->GradeTooHighException();
-        else
-            test->GradeTooLowException();
+        std::cout << e.what() << std::endl;
     }
-    delete test;
+    delete test3;
     return 0;
 }

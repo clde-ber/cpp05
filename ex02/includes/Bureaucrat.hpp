@@ -4,7 +4,7 @@
 #include <iostream>
 #include <string>
 
-class AForm;
+#include "Form.hpp"
 
 class Bureaucrat
 {
@@ -44,11 +44,12 @@ class Bureaucrat
         ~Bureaucrat();
         std::string const getName() const;
         int getGrade() const;
+        void checkValue(int const grade);
         void    incrementGrade();
         void    decrementGrade();
         void executeForm (AForm const & form);
 };
 
-std::ostream & operator<<(std::ostream & o, Bureaucrat* const & rhs);
+std::ostream & operator<<(std::ostream & o, Bureaucrat const & rhs);
 
 #endif
