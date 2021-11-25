@@ -3,6 +3,7 @@
 
 #include <string>
 #include <iostream>
+#include <fstream>
 
 #include "Form.hpp"
 
@@ -12,7 +13,7 @@ class ShrubberyCreationForm : public AForm
 {
     private:
         std::string const _target;
-        std::string _trees;
+        char* const _trees;
     public:
         ShrubberyCreationForm();
         ShrubberyCreationForm(std::string const target);
