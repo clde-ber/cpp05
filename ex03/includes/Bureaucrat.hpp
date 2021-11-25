@@ -3,12 +3,8 @@
 
 #include <iostream>
 #include <string>
-#include <exception>
-#include "Form.hpp"
 
-class ShrubberyCreationForm;
-class RobotomyRequestForm;
-class PresidentialPardonForm;
+#include "Form.hpp"
 
 class Bureaucrat
 {
@@ -21,7 +17,7 @@ class Bureaucrat
             public:
                 virtual const char* what() const throw()
                 {
-                    return "Too high grade!";
+                    return "Too high grade to sign!";
                 }
         };
         class GradeTooLowException : public std::exception
@@ -29,7 +25,7 @@ class Bureaucrat
             public:
                 virtual const char* what() const throw()
                 {
-                    return "Too low grade!";
+                    return "Too low grade to sign!";
                 }
         };
         class UnsignedException : public std::exception
@@ -48,12 +44,12 @@ class Bureaucrat
         ~Bureaucrat();
         std::string const getName() const;
         int getGrade() const;
+        void checkValue(int const grade);
         void    incrementGrade();
         void    decrementGrade();
         void executeForm (AForm const & form);
-        friend class Intern;
 };
 
-std::ostream & operator<<(std::ostream & o, Bureaucrat* const & rhs);
+std::ostream & operator<<(std::ostream & o, Bureaucrat const & rhs);
 
 #endif

@@ -8,11 +8,6 @@ Intern::Intern( void )
 
 }
 
-Intern::Intern( Intern const & rhs)
-{
-    *this = rhs;
-}
-
 Intern const & Intern::operator=(Intern const & rhs) const
 {
     return rhs;
@@ -23,22 +18,23 @@ Intern::~Intern()
 
 }
 
-AForm* Intern::makeForm(const char* type, std::string name)
+AForm* Intern::makeForm(const char* type, std::string target)
 {
-    try
+    std::string formTypes[3] = { "shrubbery creation", "robotomy request", "presidential pardon" };
+    AForm* form[3] = { new ShrubberyCreationForm(target), new RobotomyRequestForm(target), new PresidentialPardonForm(target) };
+
+    for (int i = 0; i < 3; i++)
     {
-        if (std::strcmp(type, "shrubbery creation") and std::strcmp(type, "robotomy request") and std::strcmp(type, "presidential pardon"))
-            throw Intern::UnknownTypeException();
+        if (formTypes[i].compare(type))
+        {
+            std::cout << "Intern creates new [" << type << "] form!" << std::endl;
+            for (int x = 0; x < 3; x++)
+            {
+                if (x != i)
+                    delete form[x];
+            }
+            return form[i];
+        }
     }
-    catch (const std::exception& e)
-    {
-        std::cout << e.what() << std::endl;
-    }
-    std::cout << "Intern creates new " << type << " form!" << std::endl;
-    if (std::strcmp(type, "shrubbery creation"))
-        return new ShrubberyCreationForm(name);
-    else if (std::strcmp(type, "robotomy request"))
-        return new RobotomyRequestForm(name);
-    else
-        return new PresidentialPardonForm(name);
+    return NULL;
 }

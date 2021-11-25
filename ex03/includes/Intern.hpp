@@ -21,7 +21,7 @@ class Intern
                 public:
                     virtual const char* what() const throw()
                     {
-                        return "Unknown type of form!";
+                        return "Intern exception : Unknown type of form!";
                     }
             };
 };

@@ -26,6 +26,9 @@ AForm::AForm(std::string const name, int isSigned, int const gradeReqSign, int c
     this->_formTypes[0] = "shrubbery creation";
     this->_formTypes[1] = "robotomy request";
     this->_formTypes[2] = "presidential pardon";
+    this->_f[0] = &ShrubberyCreationForm::AForm::execute;
+    this->_f[1] = &RobotomyRequestForm::AForm::execute;
+    this->_f[2] = &PresidentialPardonForm::AForm::execute;
 }
 
 AForm::AForm( AForm const & rhs) : _name(rhs._name), _signed(rhs._signed), _gradeReqSign(rhs._gradeReqSign), _gradeReqExe(rhs._gradeReqExe), _target(rhs._target)
