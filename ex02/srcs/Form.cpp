@@ -6,7 +6,7 @@
 
 AForm::AForm() : _name(""), _signed(0), _gradeReqSign(0), _gradeReqExe(0), _target("")
 {
-    std::cout << "Constructor by default called : form created -> [unsigned] | name [" << this->_name << "] | grade required to sign [" << this->_gradeReqSign << "] | grade requires to execute [" << this->_gradeReqExe << "] | target [" << this->_target << "]" << std::endl << std::endl;
+    std::cout << "Constructor by default called : form created -> [unsigned] | name [" << this->_name << "] | grade required to sign [" << this->_gradeReqSign << "] | grade requires to execute [" << this->_gradeReqExe << "] | target [" << this->_target << "]" << std::endl;
     this->_formTypes[0] = "shrubbery creation";
     this->_formTypes[1] = "robotomy request";
     this->_formTypes[2] = "presidential pardon";
@@ -22,7 +22,7 @@ AForm::AForm(std::string const name, int isSigned, int const gradeReqSign, int c
         std::cout << "[signed] | ";
     else
         std::cout << "[unsigned] | ";
-    std::cout << "grade required to sign [" << this->_gradeReqSign << "] | grade requires to execute [" << this->_gradeReqExe << "] | target [" << this->_target << "]" << std::endl << std::endl; 
+    std::cout << "grade required to sign [" << this->_gradeReqSign << "] | grade requires to execute [" << this->_gradeReqExe << "] | target [" << this->_target << "]" << std::endl; 
     this->_formTypes[0] = "shrubbery creation";
     this->_formTypes[1] = "robotomy request";
     this->_formTypes[2] = "presidential pardon";
@@ -38,7 +38,7 @@ AForm::AForm( AForm const & rhs) : _name(rhs._name), _signed(rhs._signed), _grad
         std::cout << "[signed] | ";
     else
         std::cout << "[unsigned] | ";
-    std::cout << "grade required to sign [" << this->_gradeReqSign << "] | grade requires to execute [" << this->_gradeReqExe << "] | target [" << this->_target << "]" << std::endl << std::endl; 
+    std::cout << "grade required to sign [" << this->_gradeReqSign << "] | grade requires to execute [" << this->_gradeReqExe << "] | target [" << this->_target << "]" << std::endl; 
     this->_formTypes[0] = rhs._formTypes[0];
     this->_formTypes[1] = rhs._formTypes[1];
     this->_formTypes[2] = rhs._formTypes[2];
@@ -52,13 +52,13 @@ AForm const & AForm::operator=(AForm const & rhs) const
         std::cout << "[signed] | ";
     else
         std::cout << "[unsigned] | ";
-    std::cout << "name [" << this->_name << "] | grade required to sign [" << this->_gradeReqSign << "] | grade requires to execute [" << this->_gradeReqExe << "] | target [" << this->_target << "]" << std::endl << std::endl;
+    std::cout << "name [" << this->_name << "] | grade required to sign [" << this->_gradeReqSign << "] | grade requires to execute [" << this->_gradeReqExe << "] | target [" << this->_target << "]" << std::endl;
     return rhs;
 }
 
 AForm::~AForm()
 {
-    std::cout << "Destructor called." << std::endl << std::endl;
+    std::cout << "Destructor called." << std::endl;
 }
 
 int AForm::getIfSigned() const

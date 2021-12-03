@@ -3,25 +3,25 @@
 Bureaucrat::Bureaucrat() : _name(""), _grade(0)
 {
     std::cout << "Constructor by default called";
-    std::cout << "-> [Nameless] bureaucrat is created with greade [null]" << std::endl << std::endl;
+    std::cout << "-> [Nameless] bureaucrat is created with greade [null]" << std::endl;
 }
 
 Bureaucrat::Bureaucrat( std::string const name, int grade) : _name(name), _grade(grade)
 {
     std::cout << "Constructor called";
-    std::cout << "-> [" << this->_name << "] " << "bureaucrat is created with grade [" << this->_grade << "]" << std::endl << std::endl;
+    std::cout << "-> [" << this->_name << "] " << "bureaucrat is created with grade [" << this->_grade << "]" << std::endl;
 }
 
 Bureaucrat::Bureaucrat( Bureaucrat const & rhs) : _name(rhs._name), _grade(rhs._grade)
 {
     std::cout << "Constructor by copy called";
-    std::cout << "-> [" << this->_name << "] " << "bureaucrat is created with grade [" << this->_grade << "]" << std::endl << std::endl;
+    std::cout << "-> [" << this->_name << "] " << "bureaucrat is created with grade [" << this->_grade << "]" << std::endl;
 }
 
 Bureaucrat const & Bureaucrat::operator=(Bureaucrat const & rhs) const
 {
     std::cout << "Assignation operator called";
-    std::cout << "-> Object substitution : Bureaucrat name is now [" << this->_name << "] " << "and grade is now [" << this->_grade << "]" << std::endl << std::endl;
+    std::cout << "-> Object substitution : Bureaucrat name is now [" << this->_name << "] " << "and grade is now [" << this->_grade << "]" << std::endl;
     return rhs;
 }
 

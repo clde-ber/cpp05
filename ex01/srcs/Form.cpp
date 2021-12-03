@@ -3,7 +3,7 @@
 
 Form::Form() : _name(""), _signed(0), _gradeReqSign(0), _gradeReqExe(0)
 {
-    std::cout << "Constructor by default called : form created -> [unsigned] | name [" << this->_name << "] | grade required to sign [" << this->_gradeReqSign << "] | grade requires to execute [" << this->_gradeReqExe << "]" << std::endl << std::endl; 
+    std::cout << "Constructor by default called : form created -> [unsigned] | name [" << this->_name << "] | grade required to sign [" << this->_gradeReqSign << "] | grade requires to execute [" << this->_gradeReqExe << "]" << std::endl; 
 }
 
 Form::Form(std::string const name, int is_signed, int const gradeReqSign, int const gradeReqExe) : _name(name), _signed(is_signed), _gradeReqSign(gradeReqSign), _gradeReqExe(gradeReqExe)
@@ -13,7 +13,7 @@ Form::Form(std::string const name, int is_signed, int const gradeReqSign, int co
         std::cout << "[signed] | ";
     else
         std::cout << "[unsigned] | ";
-    std::cout << "grade required to sign [" << this->_gradeReqSign << "] | grade requires to execute [" << this->_gradeReqExe << "]" << std::endl << std::endl; 
+    std::cout << "grade required to sign [" << this->_gradeReqSign << "] | grade requires to execute [" << this->_gradeReqExe << "]" << std::endl; 
 }
 
 Form::Form( Form const & rhs) : _name(rhs._name), _signed(rhs._signed), _gradeReqSign(rhs._gradeReqSign), _gradeReqExe(rhs._gradeReqExe)
@@ -23,7 +23,7 @@ Form::Form( Form const & rhs) : _name(rhs._name), _signed(rhs._signed), _gradeRe
         std::cout << "[signed] | ";
     else
         std::cout << "[unsigned] | ";
-    std::cout << "grade required to sign [" << this->_gradeReqSign << "] | grade requires to execute [" << this->_gradeReqExe << "]" << std::endl << std::endl; 
+    std::cout << "grade required to sign [" << this->_gradeReqSign << "] | grade requires to execute [" << this->_gradeReqExe << "]" << std::endl; 
 }
 
 Form const & Form::operator=(Form const & rhs) const
@@ -34,13 +34,13 @@ Form const & Form::operator=(Form const & rhs) const
         std::cout << "[signed] | ";
     else
         std::cout << "[unsigned] | ";
-    std::cout << "name [" << this->_name << "] | grade required to sign [" << this->_gradeReqSign << "] | grade requires to execute [" << this->_gradeReqExe << "]" << std::endl << std::endl; 
+    std::cout << "name [" << this->_name << "] | grade required to sign [" << this->_gradeReqSign << "] | grade requires to execute [" << this->_gradeReqExe << "]" << std::endl; 
     return rhs;
 }
 
 Form::~Form()
 {
-    std::cout << "Destructor called." << std::endl << std::endl;
+    std::cout << "Destructor called." << std::endl;
 }
 
 int Form::getIfSigned() const
