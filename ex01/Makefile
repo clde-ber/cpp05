@@ -1,6 +1,6 @@
 .SUFFIXES:
 
-NAME	=	Material
+NAME	=	form
 LIST	=	main \
 			Bureaucrat \
 			Form \
