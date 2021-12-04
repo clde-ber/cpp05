@@ -7,7 +7,7 @@
 
 class Bureaucrat;
 
-class PresidentialPardonForm : public AForm//(Grades requis : signature 25, execution 5)
+class PresidentialPardonForm : public AForm
 {
     private:
         std::string const _target;
@@ -15,7 +15,7 @@ class PresidentialPardonForm : public AForm//(Grades requis : signature 25, exec
         PresidentialPardonForm();
         PresidentialPardonForm(std::string const target);
         PresidentialPardonForm( PresidentialPardonForm const & rhs);
-        PresidentialPardonForm const & operator=(PresidentialPardonForm const & rhs) const;
+        PresidentialPardonForm const & operator=(PresidentialPardonForm const & rhs);
         ~PresidentialPardonForm();
         void execute (Bureaucrat const & executor) const;
 };

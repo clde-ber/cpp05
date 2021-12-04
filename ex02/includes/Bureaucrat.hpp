@@ -40,13 +40,13 @@ class Bureaucrat
         Bureaucrat();
         Bureaucrat( std::string const name, int grade);
         Bureaucrat( Bureaucrat const & rhs);
-        Bureaucrat const & operator=(Bureaucrat const & rhs) const;
+        Bureaucrat const & operator=(Bureaucrat const & rhs);
         ~Bureaucrat();
-        std::string const getName() const;
-        int getGrade() const;
+        std::string const & getName() const;
+        int const & getGrade() const;
         void checkValue(int const grade);
-        void    incrementGrade();
-        void    decrementGrade();
+        void incrementGrade();
+        void decrementGrade();
         void executeForm (AForm const & form);
 };
 

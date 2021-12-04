@@ -3,31 +3,30 @@
 Bureaucrat::Bureaucrat() : _name(""), _grade(0)
 {
     std::cout << "Constructor by default called";
-    std::cout << "-> [Nameless] bureaucrat is created with greade [null]" << std::endl << std::endl;
+    std::cout << "-> [Nameless] bureaucrat is created with greade [null]" << std::endl;
 }
 
 Bureaucrat::Bureaucrat( std::string const name, int grade) : _name(name), _grade(grade)
 {
     std::cout << "Constructor called";
-    std::cout << "-> [" << this->_name << "] " << "bureaucrat is created with grade [" << this->_grade << "]" << std::endl << std::endl;
+    std::cout << "-> [" << _name << "] " << "bureaucrat is created with grade [" << _grade << "]" << std::endl;
 }
 
 Bureaucrat::Bureaucrat( Bureaucrat const & rhs) : _name(rhs._name), _grade(rhs._grade)
 {
     std::cout << "Constructor by copy called";
-    std::cout << "-> [" << this->_name << "] " << "bureaucrat is created with grade [" << this->_grade << "]" << std::endl << std::endl;
+    std::cout << "-> [" << _name << "] " << "bureaucrat is created with grade [" << _grade << "]" << std::endl;
 }
 
-Bureaucrat const & Bureaucrat::operator=(Bureaucrat const & rhs) const
+Bureaucrat const & Bureaucrat::operator=(Bureaucrat const & rhs)
 {
     std::cout << "Assignation operator called";
-    std::cout << "-> Object substitution : Bureaucrat name is now [" << this->_name << "] " << "and grade is now [" << this->_grade << "]" << std::endl << std::endl;
     return rhs;
 }
 
 Bureaucrat::~Bureaucrat()
 {
-    std::cout << "Destructor called." << std::endl << std::endl;
+
 }
 
 std::ostream & operator<<(std::ostream & o, Bureaucrat const & rhs)
@@ -36,14 +35,14 @@ std::ostream & operator<<(std::ostream & o, Bureaucrat const & rhs)
     return o;
 }
 
-std::string const Bureaucrat::getName() const
+std::string const & Bureaucrat::getName() const
 {
-    return this->_name;
+    return _name;
 }
 
-int  Bureaucrat::getGrade() const
+int const & Bureaucrat::getGrade() const
 {
-    return this->_grade;
+    return _grade;
 }
 
 void Bureaucrat::checkValue(int grade)
@@ -56,20 +55,20 @@ void Bureaucrat::checkValue(int grade)
 
 void    Bureaucrat::incrementGrade()
 {
-    std::cout << this << "Increment : grade [" << this->_grade << "]->[" << this->_grade - 1 << "]" << std::endl;
-    checkValue(--this->_grade);
+    std::cout << this << "Increment : grade [" << _grade << "]->[" << _grade - 1 << "]" << std::endl;
+    checkValue(--_grade);
 }
 
 void    Bureaucrat::decrementGrade()
 {
-    std::cout << this << "Decrement : grade [" << this->_grade << "]->[" << this->_grade + 1 << "]" << std::endl;
-    checkValue(++this->_grade);
+    std::cout << this << "Decrement : grade [" << _grade << "]->[" << _grade + 1 << "]" << std::endl;
+    checkValue(++_grade);
 }
 
 void Bureaucrat::executeForm (AForm const & form)
 {
     if (form.getIfSigned())
-        std::cout << this->_name << " executs " << form.getName() << std::endl;
+        std::cout << _name << " executs " << form.getName() << std::endl;
     else
-        std::cout << "Bureaucrat [" << this->_name << "] cannot excecute form [" << form.getName() << "] because it is not signed" << std::endl;
+        std::cout << "Bureaucrat [" << _name << "] cannot excecute form [" << form.getName() << "] because it is not signed" << std::endl;
 }

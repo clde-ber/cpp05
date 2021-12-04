@@ -12,7 +12,7 @@ class Intern
     public:
         Intern( void );
         Intern( Intern const & rhs);
-        Intern const & operator=(Intern const & rhs) const;
+        Intern const & operator=(Intern const & rhs);
         virtual ~Intern();
         AForm* makeForm(const char* type, std::string name);
         private:

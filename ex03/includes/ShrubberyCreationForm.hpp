@@ -13,12 +13,12 @@ class ShrubberyCreationForm : public AForm
 {
     private:
         std::string const _target;
-        char* const _trees;
+        std::string _trees;
     public:
         ShrubberyCreationForm();
         ShrubberyCreationForm(std::string const target);
         ShrubberyCreationForm( ShrubberyCreationForm const & rhs);
-        ShrubberyCreationForm const & operator=(ShrubberyCreationForm const & rhs) const;
+        ShrubberyCreationForm const & operator=(ShrubberyCreationForm const & rhs);
         ~ShrubberyCreationForm();
         void execute (Bureaucrat const & executor) const;
 }; // (Grades requis : signature 145, execution 137)

@@ -6,74 +6,58 @@
 
 AForm::AForm() : _name(""), _signed(0), _gradeReqSign(0), _gradeReqExe(0), _target("")
 {
-    std::cout << "Constructor by default called : form created -> [unsigned] | name [" << this->_name << "] | grade required to sign [" << this->_gradeReqSign << "] | grade requires to execute [" << this->_gradeReqExe << "] | target [" << this->_target << "]" << std::endl;
-    this->_formTypes[0] = "shrubbery creation";
-    this->_formTypes[1] = "robotomy request";
-    this->_formTypes[2] = "presidential pardon";
-    this->_f[0] = &ShrubberyCreationForm::AForm::execute;
-    this->_f[1] = &RobotomyRequestForm::AForm::execute;
-    this->_f[2] = &PresidentialPardonForm::AForm::execute;
+    _formTypes[0] = "shrubbery creation";
+    _formTypes[1] = "robotomy request";
+    _formTypes[2] = "presidential pardon";
+    _f[0] = &ShrubberyCreationForm::AForm::execute;
+    _f[1] = &RobotomyRequestForm::AForm::execute;
+    _f[2] = &PresidentialPardonForm::AForm::execute;
 }
 
 AForm::AForm(std::string const name, int isSigned, int const gradeReqSign, int const gradeReqExe, std::string const target) : _name(name), _signed(isSigned), _gradeReqSign(gradeReqSign), _gradeReqExe(gradeReqExe), _target(target)
 {
-    std::cout << "Constructor called : new form created -> name [" << this->_name << "] | ";
-    if (this->_signed)
-        std::cout << "[signed] | ";
-    else
-        std::cout << "[unsigned] | ";
-    std::cout << "grade required to sign [" << this->_gradeReqSign << "] | grade requires to execute [" << this->_gradeReqExe << "] | target [" << this->_target << "]" << std::endl; 
-    this->_formTypes[0] = "shrubbery creation";
-    this->_formTypes[1] = "robotomy request";
-    this->_formTypes[2] = "presidential pardon";
-    this->_f[0] = &ShrubberyCreationForm::AForm::execute;
-    this->_f[1] = &RobotomyRequestForm::AForm::execute;
-    this->_f[2] = &PresidentialPardonForm::AForm::execute;
+    _formTypes[0] = "shrubbery creation";
+    _formTypes[1] = "robotomy request";
+    _formTypes[2] = "presidential pardon";
+    _f[0] = &ShrubberyCreationForm::AForm::execute;
+    _f[1] = &RobotomyRequestForm::AForm::execute;
+    _f[2] = &PresidentialPardonForm::AForm::execute;
 }
 
 AForm::AForm( AForm const & rhs) : _name(rhs._name), _signed(rhs._signed), _gradeReqSign(rhs._gradeReqSign), _gradeReqExe(rhs._gradeReqExe), _target(rhs._target)
 {
-    std::cout << "Constructor by copy called : new form created -> name [" << this->_name << "] | ";
-    if (this->_signed)
-        std::cout << "[signed] | ";
-    else
-        std::cout << "[unsigned] | ";
-    std::cout << "grade required to sign [" << this->_gradeReqSign << "] | grade requires to execute [" << this->_gradeReqExe << "] | target [" << this->_target << "]" << std::endl; 
-    this->_formTypes[0] = rhs._formTypes[0];
-    this->_formTypes[1] = rhs._formTypes[1];
-    this->_formTypes[2] = rhs._formTypes[2];
+    _formTypes[0] = rhs._formTypes[0];
+    _formTypes[1] = rhs._formTypes[1];
+    _formTypes[2] = rhs._formTypes[2];
+    _f[0] = rhs._f[0];
+    _f[1] = rhs._f[1];
+    _f[2] = rhs._f[2];
 }
 
-AForm const & AForm::operator=(AForm const & rhs) const
+AForm const & AForm::operator=(AForm const & rhs)
 {
     std::cout << "Assignation operator called";
-    std::cout << "-> Object substitution : Form is now ";
-    if (this->_signed)
-        std::cout << "[signed] | ";
-    else
-        std::cout << "[unsigned] | ";
-    std::cout << "name [" << this->_name << "] | grade required to sign [" << this->_gradeReqSign << "] | grade requires to execute [" << this->_gradeReqExe << "] | target [" << this->_target << "]" << std::endl;
     return rhs;
 }
 
 AForm::~AForm()
 {
-    std::cout << "Destructor called." << std::endl;
+
 }
 
 int AForm::getIfSigned() const
 {
-    return this->_signed;
+    return _signed;
 }
 
 int AForm::getGradeReqSign() const
 {
-    return this->_gradeReqSign;
+    return _gradeReqSign;
 }
 
 int AForm::getGradeReqExe() const
 {
-    return this->_gradeReqExe;
+    return _gradeReqExe;
 }
 
 int AForm::checkValue(int grade)
@@ -91,25 +75,25 @@ int AForm::checkValue(int grade)
     return 1; 
 }
 
-void AForm::beSigned(Bureaucrat* bureaucrat)
+void AForm::beSigned(Bureaucrat * bureaucrat)
 {
-    if (bureaucrat->getGrade() <= this->_gradeReqSign)
-        this->_signed = 1;
+    if (bureaucrat->getGrade() <= _gradeReqSign)
+        _signed = 1;
     else
-        this->_signed = 0;
+        _signed = 0;
 }
 
-void AForm::signForm(Bureaucrat* bureaucrat)
+void AForm::signForm(Bureaucrat * bureaucrat)
 {
-    if (checkValue(this->_gradeReqSign))
+    if (checkValue(_gradeReqSign))
     {
-        if (this->_gradeReqSign < bureaucrat->getGrade())
+        if (_gradeReqSign < bureaucrat->getGrade())
         {
             throw AForm::GradeTooLowException();
-            std::cout << "Bureaucrat [" << bureaucrat->getName() << "] cannot sign Form [" << this->_name << "] because of a too low grade" << std::endl;
+            std::cout << "Bureaucrat [" << bureaucrat->getName() << "] cannot sign Form [" << _name << "] because of a too low grade" << std::endl;
             return ;
         }
-        std::cout << "Bureaucrat [" << bureaucrat->getName() << "] signs Form [" << this->_name << "]" << std::endl;
+        std::cout << "Bureaucrat [" << bureaucrat->getName() << "] signs Form [" << _name << "]" << std::endl;
     }
 }
 
@@ -120,9 +104,9 @@ std::ostream & operator<<(std::ostream & o, AForm const & rhs)
     return o;
 }
 
-std::string const AForm::getName() const
+std::string const & AForm::getName() const
 {
-    return this->_name;
+    return _name;
 }
 
 int AForm::checkIfSigned(bool isSigned)
@@ -139,7 +123,7 @@ void AForm::execute (Bureaucrat const & executor) const
 {
     for (int i = 0; i < 3; i++)
     {
-        if (this->_name.compare(this->_formTypes[i]) == 0)
+        if (_name.compare(_formTypes[i]) == 0)
             (this->*_f[i])(executor);
     }
 }

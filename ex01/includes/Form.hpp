@@ -33,13 +33,13 @@ class Form
         Form();
         Form(std::string const name, int is_signed, int const gradeReqSign, int const gradeReqExe);
         Form( Form const & rhs);
-        Form const & operator=(Form const & rhs) const;
+        Form const & operator=(Form const & rhs);
         ~Form();
         int getIfSigned() const;
         int getGradeReqSign() const;
         int getGradeReqExe() const;
-        int beSigned(Bureaucrat & bureaucrat) const;
-        void signForm(Bureaucrat & bureaucrat);
+        void beSigned(Bureaucrat* bureaucrat);
+        void signForm(Bureaucrat* bureaucrat);
         int checkValue(int grade);
 };
 

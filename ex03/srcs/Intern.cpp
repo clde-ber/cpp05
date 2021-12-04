@@ -8,7 +8,7 @@ Intern::Intern( void )
 
 }
 
-Intern const & Intern::operator=(Intern const & rhs) const
+Intern const & Intern::operator=(Intern const & rhs)
 {
     return rhs;
 }

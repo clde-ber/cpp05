@@ -45,16 +45,16 @@ class AForm
         AForm();
         AForm(std::string const name, int is_signed, int const gradeReqSign, int const gradeReqExe, std::string const target);
         AForm( AForm const & rhs);
-        AForm const & operator=(AForm const & rhs) const;
+        AForm const & operator=(AForm const & rhs);
         virtual ~AForm();
         int getIfSigned() const;
         int getGradeReqSign() const;
         int getGradeReqExe() const;
-        void beSigned(Bureaucrat* bureaucrat);
-        void signForm(Bureaucrat* bureaucrat);
+        void beSigned(Bureaucrat * bureaucrat);
+        void signForm(Bureaucrat * bureaucrat);
         int checkValue(int grade);
         int checkIfSigned(bool isSigned);
-        std::string const getName() const;
+        std::string const & getName() const;
         virtual void execute (Bureaucrat const & executor) const = 0;
 };
 

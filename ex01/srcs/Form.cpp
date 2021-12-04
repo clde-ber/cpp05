@@ -3,59 +3,64 @@
 
 Form::Form() : _name(""), _signed(0), _gradeReqSign(0), _gradeReqExe(0)
 {
-    std::cout << "Constructor by default called : form created -> [unsigned] | name [" << this->_name << "] | grade required to sign [" << this->_gradeReqSign << "] | grade requires to execute [" << this->_gradeReqExe << "]" << std::endl; 
+    std::cout << "constructor by default called : new form created " << std::endl;
+    std::cout << "- name [" << _name << "]" << std::endl;
+    if (_signed)
+        std::cout << "- [signed]" << std::endl;
+    else
+        std::cout << "- [unsigned]" << std::endl;
+    std::cout << "- grade required to sign [" << _gradeReqSign << "]" << std::endl;
+    std::cout << "- grade requires to execute [" << _gradeReqExe << "]" << std::endl; 
 }
 
 Form::Form(std::string const name, int is_signed, int const gradeReqSign, int const gradeReqExe) : _name(name), _signed(is_signed), _gradeReqSign(gradeReqSign), _gradeReqExe(gradeReqExe)
 {
-    std::cout << "Constructor called : new form created -> name [" << this->_name << "] | ";
-    if (this->_signed)
-        std::cout << "[signed] | ";
+    std::cout << "constructor called : new form created " << std::endl;
+    std::cout << "- name [" << _name << "]" << std::endl;
+    if (_signed)
+        std::cout << "- [signed]" << std::endl;
     else
-        std::cout << "[unsigned] | ";
-    std::cout << "grade required to sign [" << this->_gradeReqSign << "] | grade requires to execute [" << this->_gradeReqExe << "]" << std::endl; 
+        std::cout << "- [unsigned]" << std::endl;
+    std::cout << "- grade required to sign [" << _gradeReqSign << "]" << std::endl;
+    std::cout << "- grade requires to execute [" << _gradeReqExe << "]" << std::endl; 
 }
 
 Form::Form( Form const & rhs) : _name(rhs._name), _signed(rhs._signed), _gradeReqSign(rhs._gradeReqSign), _gradeReqExe(rhs._gradeReqExe)
 {
-    std::cout << "Constructor by copy called : new form created -> name [" << this->_name << "] | ";
-    if (this->_signed)
-        std::cout << "[signed] | ";
+    std::cout << "copy constructor called : new form created " << std::endl;
+    std::cout << "- name [" << _name << "]" << std::endl;
+    if (_signed)
+        std::cout << "- [signed]" << std::endl;
     else
-        std::cout << "[unsigned] | ";
-    std::cout << "grade required to sign [" << this->_gradeReqSign << "] | grade requires to execute [" << this->_gradeReqExe << "]" << std::endl; 
+        std::cout << "- [unsigned]" << std::endl;
+    std::cout << "- grade required to sign [" << _gradeReqSign << "]" << std::endl;
+    std::cout << "- grade requires to execute [" << _gradeReqExe << "]" << std::endl; 
 }
 
-Form const & Form::operator=(Form const & rhs) const
+Form const & Form::operator=(Form const & rhs)
 {
     std::cout << "Assignation operator called";
-    std::cout << "-> Object substitution : Form is now ";
-    if (this->_signed)
-        std::cout << "[signed] | ";
-    else
-        std::cout << "[unsigned] | ";
-    std::cout << "name [" << this->_name << "] | grade required to sign [" << this->_gradeReqSign << "] | grade requires to execute [" << this->_gradeReqExe << "]" << std::endl; 
     return rhs;
 }
 
 Form::~Form()
 {
-    std::cout << "Destructor called." << std::endl;
+
 }
 
 int Form::getIfSigned() const
 {
-    return this->_signed;
+    return _signed;
 }
 
 int Form::getGradeReqSign() const
 {
-    return this->_gradeReqSign;
+    return _gradeReqSign;
 }
 
 int Form::getGradeReqExe() const
 {
-    return this->_gradeReqExe;
+    return _gradeReqExe;
 }
 
 int Form::checkValue(int grade)
@@ -72,26 +77,25 @@ int Form::checkValue(int grade)
     }
     return 1; 
 }
-
-int Form::beSigned(Bureaucrat & bureaucrat) const
+void Form::beSigned(Bureaucrat * bureaucrat)
 {
-    if (bureaucrat.getGrade() <= this->_gradeReqSign)
-        return 1;
+    if (bureaucrat->getGrade() <= _gradeReqSign)
+        _signed = 1;
     else
-        return 0;
+        _signed = 0;
 }
 
-void Form::signForm(Bureaucrat & bureaucrat)
+void Form::signForm(Bureaucrat * bureaucrat)
 {
-    if (checkValue(this->_gradeReqSign))
+    if (checkValue(_gradeReqSign))
     {
-        if (this->_gradeReqSign < bureaucrat.getGrade())
+        if (_gradeReqSign < bureaucrat->getGrade())
         {
             throw Form::GradeTooLowException();
-            std::cout << "Bureaucrat [" << bureaucrat.getName() << "] cannot sign Form [" << this->_name << "] because of a too low grade" << std::endl;
+            std::cout << "Bureaucrat [" << bureaucrat->getName() << "] cannot sign Form [" << _name << "] because of a too low grade" << std::endl;
             return ;
         }
-        std::cout << "Bureaucrat [" << bureaucrat.getName() << "] signs Form [" << this->_name << "]" << std::endl;
+        std::cout << "Bureaucrat [" << bureaucrat->getName() << "] signs Form [" << _name << "]" << std::endl;
     }
 }
 

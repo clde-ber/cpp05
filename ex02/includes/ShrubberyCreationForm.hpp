@@ -3,6 +3,7 @@
 
 #include <string>
 #include <iostream>
+#include <fstream>
 #include "Form.hpp"
 
 class Bureaucrat;
@@ -16,7 +17,7 @@ class ShrubberyCreationForm : public AForm
         ShrubberyCreationForm();
         ShrubberyCreationForm(std::string const target);
         ShrubberyCreationForm( ShrubberyCreationForm const & rhs);
-        ShrubberyCreationForm const & operator=(ShrubberyCreationForm const & rhs) const;
+        ShrubberyCreationForm const & operator=(ShrubberyCreationForm const & rhs);
         ~ShrubberyCreationForm();
         void execute (Bureaucrat const & executor) const;
 };

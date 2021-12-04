@@ -10,7 +10,7 @@
 
 class Bureaucrat;
 
-class RobotomyRequestForm : public AForm//(Grades requis : signature 72, execution 45)
+class RobotomyRequestForm : public AForm
 {
     private:
         std::string const _target;
@@ -18,7 +18,7 @@ class RobotomyRequestForm : public AForm//(Grades requis : signature 72, executi
         RobotomyRequestForm();
         RobotomyRequestForm(std::string const target);
         RobotomyRequestForm( RobotomyRequestForm const & rhs);
-        RobotomyRequestForm const & operator=(RobotomyRequestForm const & rhs) const;
+        RobotomyRequestForm const & operator=(RobotomyRequestForm const & rhs);
         ~RobotomyRequestForm();
         void execute (Bureaucrat const & executor) const;
 };
