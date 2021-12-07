@@ -4,27 +4,27 @@
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
 
-AForm::AForm() : _name(""), _signed(0), _gradeReqSign(0), _gradeReqExe(0), _target("")
+Form::Form() : _name(""), _signed(0), _gradeReqSign(0), _gradeReqExe(0), _target("")
 {
     _formTypes[0] = "shrubbery creation";
     _formTypes[1] = "robotomy request";
     _formTypes[2] = "presidential pardon";
-    _f[0] = &ShrubberyCreationForm::AForm::execute;
-    _f[1] = &RobotomyRequestForm::AForm::execute;
-    _f[2] = &PresidentialPardonForm::AForm::execute;
+    _f[0] = &ShrubberyCreationForm::Form::execute;
+    _f[1] = &RobotomyRequestForm::Form::execute;
+    _f[2] = &PresidentialPardonForm::Form::execute;
 }
 
-AForm::AForm(std::string const name, int isSigned, int const gradeReqSign, int const gradeReqExe, std::string const target) : _name(name), _signed(isSigned), _gradeReqSign(gradeReqSign), _gradeReqExe(gradeReqExe), _target(target)
+Form::Form(std::string const name, int isSigned, int const gradeReqSign, int const gradeReqExe, std::string const target) : _name(name), _signed(isSigned), _gradeReqSign(gradeReqSign), _gradeReqExe(gradeReqExe), _target(target)
 {
     _formTypes[0] = "shrubbery creation";
     _formTypes[1] = "robotomy request";
     _formTypes[2] = "presidential pardon";
-    _f[0] = &ShrubberyCreationForm::AForm::execute;
-    _f[1] = &RobotomyRequestForm::AForm::execute;
-    _f[2] = &PresidentialPardonForm::AForm::execute;
+    _f[0] = &ShrubberyCreationForm::Form::execute;
+    _f[1] = &RobotomyRequestForm::Form::execute;
+    _f[2] = &PresidentialPardonForm::Form::execute;
 }
 
-AForm::AForm( AForm const & rhs) : _name(rhs._name), _signed(rhs._signed), _gradeReqSign(rhs._gradeReqSign), _gradeReqExe(rhs._gradeReqExe), _target(rhs._target)
+Form::Form( Form const & rhs) : _name(rhs._name), _signed(rhs._signed), _gradeReqSign(rhs._gradeReqSign), _gradeReqExe(rhs._gradeReqExe), _target(rhs._target)
 {
     _formTypes[0] = rhs._formTypes[0];
     _formTypes[1] = rhs._formTypes[1];
@@ -34,48 +34,49 @@ AForm::AForm( AForm const & rhs) : _name(rhs._name), _signed(rhs._signed), _grad
     _f[2] = rhs._f[2];
 }
 
-AForm const & AForm::operator=(AForm const & rhs)
+Form const & Form::operator=(Form const & rhs)
 {
     std::cout << "Assignation operator called";
-    return rhs;
+    new (this) Forms(rhs);
+    return *this;
 }
 
-AForm::~AForm()
+Form::~Form()
 {
 
 }
 
-int AForm::getIfSigned() const
+int Form::getIfSigned() const
 {
     return _signed;
 }
 
-int AForm::getGradeReqSign() const
+int Form::getGradeReqSign() const
 {
     return _gradeReqSign;
 }
 
-int AForm::getGradeReqExe() const
+int Form::getGradeReqExe() const
 {
     return _gradeReqExe;
 }
 
-int AForm::checkValue(int grade)
+int Form::checkValue(int grade)
 {
     if (grade < 1)
     {
-        throw AForm::GradeTooHighException();
+        throw Form::GradeTooHighException();
         return 0;
     }
     if (grade > 150)
     {
-        throw AForm::GradeTooLowException();
+        throw Form::GradeTooLowException();
         return 0;
     }
     return 1; 
 }
 
-void AForm::beSigned(Bureaucrat * bureaucrat)
+void Form::beSigned(Bureaucrat * bureaucrat)
 {
     if (bureaucrat->getGrade() <= _gradeReqSign)
         _signed = 1;
@@ -83,13 +84,13 @@ void AForm::beSigned(Bureaucrat * bureaucrat)
         _signed = 0;
 }
 
-void AForm::signForm(Bureaucrat * bureaucrat)
+void Form::signForm(Bureaucrat * bureaucrat)
 {
     if (checkValue(_gradeReqSign))
     {
         if (_gradeReqSign < bureaucrat->getGrade())
         {
-            throw AForm::GradeTooLowException();
+            throw Form::GradeTooLowException();
             std::cout << "Bureaucrat [" << bureaucrat->getName() << "] cannot sign Form [" << _name << "] because of a too low grade" << std::endl;
             return ;
         }
@@ -97,29 +98,29 @@ void AForm::signForm(Bureaucrat * bureaucrat)
     }
 }
 
-std::ostream & operator<<(std::ostream & o, AForm const & rhs)
+std::ostream & operator<<(std::ostream & o, Form const & rhs)
 {
     o << "Form signature status : [" << rhs.getIfSigned() << "] | grade required for signing : [" << rhs.getGradeReqSign() \
     << "] | grade required for executing : " << rhs.getGradeReqExe();
     return o;
 }
 
-std::string const & AForm::getName() const
+std::string const & Form::getName() const
 {
     return _name;
 }
 
-int AForm::checkIfSigned(bool isSigned)
+int Form::checkIfSigned(bool isSigned)
 {
     if (!isSigned)
     {
-        throw AForm::UnsignedException();
+        throw Form::UnsignedException();
         return 0;
     }
     return 1;
 }
 
-void AForm::execute (Bureaucrat const & executor) const
+void Form::execute(Bureaucrat const & executor) const
 {
     for (int i = 0; i < 3; i++)
     {

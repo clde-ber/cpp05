@@ -6,7 +6,7 @@
 
 class Bureaucrat;
 
-class AForm
+class Form
 {
     private:
         std::string const _name;
@@ -15,7 +15,7 @@ class AForm
         int const _gradeReqExe;
         std::string const _target;
         std::string _formTypes[3];
-        void (AForm::*_f[3])(const Bureaucrat &) const;
+        void (Form::*_f[3])(const Bureaucrat &) const;
     protected:
         class GradeTooHighException : public std::exception
         {
@@ -42,11 +42,11 @@ class AForm
                 }
         };
     public:
-        AForm();
-        AForm(std::string const name, int is_signed, int const gradeReqSign, int const gradeReqExe, std::string const target);
-        AForm( AForm const & rhs);
-        AForm const & operator=(AForm const & rhs);
-        virtual ~AForm();
+        Form();
+        Form(std::string const name, int is_signed, int const gradeReqSign, int const gradeReqExe, std::string const target);
+        Form( Form const & rhs);
+        Form const & operator=(Form const & rhs);
+        virtual ~Form();
         int getIfSigned() const;
         int getGradeReqSign() const;
         int getGradeReqExe() const;
@@ -55,9 +55,9 @@ class AForm
         int checkValue(int grade);
         int checkIfSigned(bool isSigned);
         std::string const & getName() const;
-        virtual void execute (Bureaucrat const & executor) const = 0;
+        virtual void execute (Bureaucrat const & executor) const;
 };
 
-std::ostream & operator<<(std::ostream & o, AForm const & rhs);
+std::ostream & operator<<(std::ostream & o, Form const & rhs);
 
 #endif

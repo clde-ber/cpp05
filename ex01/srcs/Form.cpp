@@ -40,7 +40,11 @@ Form::Form( Form const & rhs) : _name(rhs._name), _signed(rhs._signed), _gradeRe
 Form const & Form::operator=(Form const & rhs)
 {
     std::cout << "Assignation operator called";
-    return rhs;
+    Form const * tmp;
+    tmp = this;
+    new (this) Form(rhs);
+    delete tmp;
+    return *this;
 }
 
 Form::~Form()

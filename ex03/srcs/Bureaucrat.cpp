@@ -21,7 +21,8 @@ Bureaucrat::Bureaucrat( Bureaucrat const & rhs) : _name(rhs._name), _grade(rhs._
 Bureaucrat const & Bureaucrat::operator=(Bureaucrat const & rhs)
 {
     std::cout << "Assignation operator called";
-    return rhs;
+    new (this) Bureaucrat(rhs);
+    return *this;
 }
 
 Bureaucrat::~Bureaucrat()
@@ -65,7 +66,7 @@ void    Bureaucrat::decrementGrade()
     checkValue(++_grade);
 }
 
-void Bureaucrat::executeForm (AForm const & form)
+void Bureaucrat::executeForm (Form const & form)
 {
     if (form.getIfSigned())
         std::cout << _name << " executs " << form.getName() << std::endl;

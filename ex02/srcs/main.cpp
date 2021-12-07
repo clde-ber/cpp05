@@ -10,6 +10,19 @@ int main()
     ShrubberyCreationForm* sForm = new ShrubberyCreationForm(b1->getName());
     RobotomyRequestForm* rForm = new RobotomyRequestForm(b1->getName());
     PresidentialPardonForm* pForm = new PresidentialPardonForm(b1->getName());
+    Form *randomForm = sForm;
+    try
+    {
+        randomForm->beSigned(b1);
+        randomForm->signForm(b1);
+        randomForm->checkIfSigned(randomForm->getIfSigned());
+        b1->executeForm(*randomForm);
+        randomForm->execute(*b1);
+    }
+    catch (const std::exception& e)
+    {
+        std::cout << e.what() << std::endl;
+    }
     try
     {
         sForm->beSigned(b1);
@@ -52,6 +65,7 @@ int main()
     sForm = new ShrubberyCreationForm(b2->getName());
     rForm = new RobotomyRequestForm(b2->getName());
     pForm = new PresidentialPardonForm(b2->getName());
+    randomForm =  rForm;
     try
     {
         sForm->checkIfSigned(sForm->getIfSigned());

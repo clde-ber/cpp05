@@ -1,24 +1,27 @@
 #include "ShrubberyCreationForm.hpp"
 #include "Bureaucrat.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm() : AForm("shrubbery creation", 0, 145, 137, "no target")
+ShrubberyCreationForm::ShrubberyCreationForm() : Form("shrubbery creation", 0, 145, 137, "no target")
 {
     _trees = "                                   _\\ |/ /   _\\ |/ /   _\\ |/ /      \\/\\|//_   \\/\\|//_   \\/\\|//_      _\\/|//_   _\\/|//_   _\\/|//_        \\|/       \\|/       \\|/           |         |         |            |         |         |                                        ";
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string const target) : AForm("shrubbery creation", 0, 145, 137, target)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string const target) : Form("shrubbery creation", 0, 145, 137, target)
 {
     _trees = "                                   _\\ |/ /   _\\ |/ /   _\\ |/ /      \\/\\|//_   \\/\\|//_   \\/\\|//_      _\\/|//_   _\\/|//_   _\\/|//_        \\|/       \\|/       \\|/           |         |         |            |         |         |                                        ";
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm( ShrubberyCreationForm const & rhs) : AForm("shrubbery creation", 0, 145, 137, rhs._target)
+ShrubberyCreationForm::ShrubberyCreationForm( ShrubberyCreationForm const & rhs) : Form("shrubbery creation", 0, 145, 137, rhs._target)
 {
     _trees = rhs._trees;
 }
 
 ShrubberyCreationForm const & ShrubberyCreationForm::operator=(ShrubberyCreationForm const & rhs)
 {
-    return rhs;
+    ShrubberyCreationForm const * tmp;
+    tmp = this;
+    new (this) ShrubberyCreationForm(rhs);
+    return *this;
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm()

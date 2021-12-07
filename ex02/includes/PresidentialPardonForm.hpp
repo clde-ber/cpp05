@@ -7,7 +7,7 @@
 
 class Bureaucrat;
 
-class PresidentialPardonForm  : public AForm
+class PresidentialPardonForm  : public Form
 {
     private:
         std::string const _target;

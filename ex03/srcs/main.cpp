@@ -9,7 +9,7 @@ int main()
 {
     Bureaucrat* b = new Bureaucrat("B1", 50);
     Intern* i = new Intern();
-    AForm* sForm = i->makeForm("shrubbery creation", b->getName());
+    Form* sForm = i->makeForm("shrubbery creation", b->getName());
     try
     {
         sForm->beSigned(b);
@@ -22,7 +22,7 @@ int main()
     {
         std::cout << e.what() << std::endl;
     }
-    AForm* rForm = i->makeForm("robotomy request", b->getName());
+    Form* rForm = i->makeForm("robotomy request", b->getName());
     try
     {
         rForm->beSigned(b);
@@ -35,7 +35,7 @@ int main()
     {
         std::cout << e.what() << std::endl;
     }
-    AForm* randomForm = i->makeForm("some random form", b->getName());
+    Form* randomForm = i->makeForm("some random form", b->getName());
     try
     {
         randomForm->checkIfSigned(randomForm->getIfSigned());

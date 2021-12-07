@@ -5,7 +5,7 @@
 #include <string>
 #include <cstring>
 
-class AForm;
+class Form;
 
 class Intern
 {
@@ -14,7 +14,7 @@ class Intern
         Intern( Intern const & rhs);
         Intern const & operator=(Intern const & rhs);
         virtual ~Intern();
-        AForm* makeForm(const char* type, std::string name);
+        Form* makeForm(const char* type, std::string name);
         private:
             class UnknownTypeException : public std::exception
             {

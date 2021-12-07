@@ -47,7 +47,7 @@ class Bureaucrat
         void checkValue(int const grade);
         void incrementGrade();
         void decrementGrade();
-        void executeForm (AForm const & form);
+        void executeForm (Form const & form);
 };
 
 std::ostream & operator<<(std::ostream & o, Bureaucrat const & rhs);

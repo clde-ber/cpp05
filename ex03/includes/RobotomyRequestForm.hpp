@@ -10,7 +10,7 @@
 
 class Bureaucrat;
 
-class RobotomyRequestForm : public AForm
+class RobotomyRequestForm : public Form
 {
     private:
         std::string const _target;

@@ -21,9 +21,11 @@ Bureaucrat::Bureaucrat( Bureaucrat const & rhs) : _name(rhs._name), _grade(rhs._
 Bureaucrat const & Bureaucrat::operator=(Bureaucrat const & rhs)
 {
     std::cout << "Assignation operator called";
-    _grade = rhs._grade;
-    std::cout << "-> non const attribute substitution : Bureaucrat name remains [" << _name << "] " << "and grade is now [" << _grade << "]" << std::endl;
-    return rhs;
+    Bureaucrat const * tmp;
+    tmp = this;
+    new (this) Bureaucrat(rhs);
+    delete (tmp);
+    return *this;
 }
 
 Bureaucrat::~Bureaucrat()
