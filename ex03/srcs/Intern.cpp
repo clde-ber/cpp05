@@ -8,9 +8,15 @@ Intern::Intern( void )
 
 }
 
+Intern::Intern( Intern const & rhs)
+{
+    *this = rhs;
+}
+
 Intern const & Intern::operator=(Intern const & rhs)
 {
-    return rhs;
+    new (this) Intern(rhs);
+    return *this;
 }
 
 Intern::~Intern()

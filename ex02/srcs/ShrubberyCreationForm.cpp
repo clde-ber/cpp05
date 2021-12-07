@@ -20,8 +20,6 @@ ShrubberyCreationForm::ShrubberyCreationForm( ShrubberyCreationForm const & rhs)
 
 ShrubberyCreationForm const & ShrubberyCreationForm::operator=(ShrubberyCreationForm const & rhs)
 {
-    ShrubberyCreationForm const * tmp;
-    tmp = this;
     new (this) ShrubberyCreationForm(rhs);
     return *this;
 }

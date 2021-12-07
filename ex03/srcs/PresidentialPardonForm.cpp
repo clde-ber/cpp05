@@ -18,8 +18,6 @@ PresidentialPardonForm::PresidentialPardonForm( PresidentialPardonForm const & r
 
 PresidentialPardonForm const & PresidentialPardonForm::operator=(PresidentialPardonForm const & rhs)
 {
-    PresidentialPardonForm const * tmp;
-    tmp = this;
     new (this) PresidentialPardonForm(rhs);
     return *this;
 }

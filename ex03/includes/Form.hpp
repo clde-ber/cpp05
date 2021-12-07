@@ -55,7 +55,7 @@ class Form
         int checkValue(int grade);
         int checkIfSigned(bool isSigned);
         std::string const & getName() const;
-        virtual void execute (Bureaucrat const & executor) const = 0;
+        virtual void execute (Bureaucrat const & executor) const;
 };
 
 std::ostream & operator<<(std::ostream & o, Form const & rhs);

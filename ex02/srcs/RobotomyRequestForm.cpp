@@ -18,8 +18,6 @@ RobotomyRequestForm::RobotomyRequestForm( RobotomyRequestForm const & rhs) : For
 
 RobotomyRequestForm const & RobotomyRequestForm::operator=(RobotomyRequestForm const & rhs)
 {
-    RobotomyRequestForm const * tmp;
-    tmp = this;
     new (this) RobotomyRequestForm(rhs);
     return *this;
 }

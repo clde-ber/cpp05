@@ -18,8 +18,6 @@ RobotomyRequestForm::RobotomyRequestForm( RobotomyRequestForm const & rhs) : For
 
 RobotomyRequestForm const & RobotomyRequestForm::operator=(RobotomyRequestForm const & rhs)
 {
-    RobotomyRequestForm const * tmp;
-    tmp = this;
     new (this) RobotomyRequestForm(rhs);
     return *this;
 }
@@ -33,7 +31,7 @@ RobotomyRequestForm::~RobotomyRequestForm()
 void RobotomyRequestForm::execute (Bureaucrat const & executor) const
 {
     (void)executor;
-    const char* file = "rain.wav";
+    const char* file = "rainSound.mp3";
     char toJoin[255];
     memset(toJoin, 0, std::strlen(toJoin));
     char* pre = std::strcat(toJoin, "cvlc --play-and-exit ");
