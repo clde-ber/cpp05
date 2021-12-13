@@ -43,6 +43,7 @@ class Bureaucrat
         ~Bureaucrat();
         std::string const & getName() const;
         int const & getGrade() const;
+        void checkValue(int const grade) const;
         void checkValue(int const grade);
         void    incrementGrade();
         void    decrementGrade();

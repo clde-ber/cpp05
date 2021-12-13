@@ -21,6 +21,6 @@ class ShrubberyCreationForm : public Form
         ShrubberyCreationForm & operator=(ShrubberyCreationForm const & rhs);
         virtual ~ShrubberyCreationForm();
         void executeSpecialForm(Bureaucrat const & executor) const;
-}; // (Grades requis : signature 145, execution 137)
+};
 
 #endif

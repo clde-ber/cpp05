@@ -4,61 +4,39 @@
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
 
-Form::Form() : _name(""), _signed(0), _gradeReqSign(0), _gradeReqExe(0), _target("")
+Form::Form() : _name("random form"), _signed(0), _gradeReqSign(150), _gradeReqExe(150), _target("random target")
 {
     std::cout << "constructor called" << std::endl;
-    try
-    {
-        checkValue(_gradeReqSign);
-        checkValue(_gradeReqExe);
-        std::cout << "New form created" << std::endl;
-        _formTypes[0] = "shrubbery creation";
-        _formTypes[1] = "robotomy request";
-        _formTypes[2] = "presidential pardon";
-        _f[0] = &ShrubberyCreationForm::Form::executeSpecialForm;
-        _f[1] = &RobotomyRequestForm::Form::executeSpecialForm;
-        _f[2] = &PresidentialPardonForm::Form::executeSpecialForm;
-    }
-    catch (std::exception &e)
-    {
-        std::cout << e.what() << std::endl;
-    }
+    checkValue(_gradeReqSign);
+    checkValue(_gradeReqExe);
+    _formTypes[0] = "shrubbery creation";
+    _formTypes[1] = "robotomy request";
+    _formTypes[2] = "presidential pardon";
+    _f[0] = &ShrubberyCreationForm::Form::executeSpecialForm;
+    _f[1] = &RobotomyRequestForm::Form::executeSpecialForm;
+    _f[2] = &PresidentialPardonForm::Form::executeSpecialForm;
 }
 
 Form::Form(std::string const name, int isSigned, int const gradeReqSign, int const gradeReqExe, std::string const target) : _name(name), _signed(isSigned), _gradeReqSign(gradeReqSign), _gradeReqExe(gradeReqExe), _target(target)
 {
     std::cout << "constructor called" << std::endl;
-    try
-    {
-        checkValue(_gradeReqSign);
-        checkValue(_gradeReqExe);
-        std::cout << "New form created" << std::endl;
-        _formTypes[0] = "shrubbery creation";
-        _formTypes[1] = "robotomy request";
-        _formTypes[2] = "presidential pardon";
-        _f[0] = &ShrubberyCreationForm::Form::executeSpecialForm;
-        _f[1] = &RobotomyRequestForm::Form::executeSpecialForm;
-        _f[2] = &PresidentialPardonForm::Form::executeSpecialForm;
-    }
-    catch (std::exception &e)
-    {
-        std::cout << e.what() << std::endl;
-    }
+    checkValue(_gradeReqSign);
+    checkValue(_gradeReqExe);
+    _formTypes[0] = "shrubbery creation";
+    _formTypes[1] = "robotomy request";
+    _formTypes[2] = "presidential pardon";
+    _f[0] = &ShrubberyCreationForm::Form::executeSpecialForm;
+    _f[1] = &RobotomyRequestForm::Form::executeSpecialForm;
+    _f[2] = &PresidentialPardonForm::Form::executeSpecialForm;
+    std::cout << "New form created" << std::endl;
 }
 
 Form::Form( Form const & rhs) : _signed(rhs._signed), _gradeReqSign(rhs._gradeReqSign), _gradeReqExe(rhs._gradeReqExe), _target(rhs._target)
 {
     std::cout << "constructor called" << std::endl;
-    try
-    {
-        checkValue(_gradeReqSign);
-        checkValue(_gradeReqExe);    
-        std::cout << "New form created" << std::endl;
-    }
-    catch (std::exception &e)
-    {
-        std::cout << e.what() << std::endl;
-    }
+    checkValue(_gradeReqSign);
+    checkValue(_gradeReqExe);
+    std::cout << "New form created" << std::endl;
 }
 
 Form & Form::operator=(Form const & rhs)
@@ -109,27 +87,29 @@ int Form::checkValue(int const & grade)
     return 1; 
 }
 
-void Form::beSigned(Bureaucrat * bureaucrat)
+int Form::checkValue(int const & grade) const
 {
-    if (bureaucrat->getGrade() <= _gradeReqSign)
-        _signed = 1;
-    else
-        _signed = 0;
+    if (grade < 1)
+    {
+        throw Form::GradeTooHighException();
+        return 0;
+    }
+    if (grade > 150)
+    {
+        throw Form::GradeTooLowException();
+        return 0;
+    }
+    return 1; 
 }
 
-void Form::signForm(Bureaucrat * bureaucrat)
+void Form::beSigned(Bureaucrat & bureaucrat)
 {
-    if (checkValue(_gradeReqSign))
-    {
-        if (_gradeReqSign < bureaucrat->getGrade())
-        {
-            throw Form::GradeTooLowException();
-            std::cout << "Bureaucrat [" << bureaucrat->getName() << "] cannot sign Form [" << _name << "] because of a too low grade" << std::endl;
-            return ;
-        }
-        std::cout << "Bureaucrat [" << bureaucrat->getName() << "] signs Form [" << _name << "]" << std::endl;
-    }
+    if (bureaucrat.getGrade() <= _gradeReqSign)
+        _signed = 1;
+    else
+        throw Form::GradeTooLowException();
 }
+
 
 std::ostream & operator<<(std::ostream & o, Form const & rhs)
 {
@@ -143,21 +123,13 @@ std::string const & Form::getName() const
     return _name;
 }
 
-int Form::checkIfSigned(bool isSigned)
-{
-    if (!isSigned)
-    {
-        throw Form::UnsignedException();
-        return 0;
-    }
-    return 1;
-}
-
 void Form::execute(Bureaucrat const & executor) const
 {
+    if (!_signed)
+        throw UnsignedException();
+    else if (executor.getGrade() > _gradeReqSign)
+        throw GradeTooLowException();
     for (int i = 0; i < 3; i++)
-    {
         if (_name.compare(_formTypes[i]) == 0)
             (this->*_f[i])(executor);
-    }
 }

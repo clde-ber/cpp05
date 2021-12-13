@@ -33,7 +33,7 @@ void ShrubberyCreationForm::executeSpecialForm(Bureaucrat const & executor) cons
 {
     (void)executor;
     std::ofstream ofs("Trees.txt", std::ofstream::out);
-
+    
     for (int i = 0; i < 8; i++)
     {
         for (int j = 0; j < 33; j++)

@@ -17,7 +17,7 @@ class Bureaucrat
             public:
                 virtual const char* what() const throw()
                 {
-                    return "Too high grade to sign!";
+                    return "Too high grade!";
                 }
         };
         class GradeTooLowException : public std::exception
@@ -25,7 +25,7 @@ class Bureaucrat
             public:
                 virtual const char* what() const throw()
                 {
-                    return "Too low grade to sign!";
+                    return "Too low grade!";
                 }
         };
         class UnsignedException : public std::exception
@@ -45,8 +45,10 @@ class Bureaucrat
         std::string const & getName() const;
         int const & getGrade() const;
         void checkValue(int const grade);
+        void checkValue(int const grade) const;
         void incrementGrade();
         void decrementGrade();
+        void signForm(Form & form);
         void executeForm (Form const & form);
 };
 

@@ -51,5 +51,6 @@ int main()
     delete sForm;
     delete rForm;
     delete randomForm;
+
     return 0;
 }

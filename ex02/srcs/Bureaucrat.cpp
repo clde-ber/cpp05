@@ -79,6 +79,14 @@ void Bureaucrat::checkValue(int grade)
         throw Bureaucrat::GradeTooLowException();
 }
 
+void Bureaucrat::checkValue(int grade) const
+{
+    if (grade < 1)
+        throw Bureaucrat::GradeTooHighException();
+    if (grade > 150)
+        throw Bureaucrat::GradeTooLowException();
+}
+
 void    Bureaucrat::incrementGrade()
 {
     std::cout << this << "Increment : grade [" << _grade << "]->[" << _grade - 1 << "]" << std::endl;
@@ -91,10 +99,28 @@ void    Bureaucrat::decrementGrade()
     checkValue(++_grade);
 }
 
+void Bureaucrat::signForm(Form & form)
+{
+    try
+    {
+        form.beSigned(*this);
+        std::cout <<  _name << " signs " << form.getName() << std::endl;
+    }
+    catch (std::exception &e)
+    {
+        std::cout << _name << " cannot sign " << form.getName() << " because " << e.what() << std::endl;
+    }
+}
+
 void Bureaucrat::executeForm (Form const & form)
 {
-    if (form.getIfSigned())
-        std::cout << _name << " executs " << form.getName() << std::endl;
-    else
-        std::cout << "Bureaucrat [" << _name << "] cannot excecute form [" << form.getName() << "] because it is not signed" << std::endl;
+    try
+    {
+        form.execute(*this);
+        std::cout << "Bureaucrat [" << _name << "] executes [" << form.getName() << "]" << std::endl;
+    }
+    catch (std::exception &e)
+    {
+        std::cout << "Bureaucrat [" << _name << "] cannot execute form [" << form.getName() << "] because " << e.what() << std::endl;
+    }
 }

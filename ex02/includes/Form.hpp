@@ -38,7 +38,7 @@ class Form
             public:
                 virtual const char* what() const throw()
                 {
-                    return "Form exception : This form cannot be executed because it is not signed!";
+                    return "Form exception : Form not signed!";
                 }
         };
     public:
@@ -50,11 +50,10 @@ class Form
         bool const & getIfSigned() const;
         int const & getGradeReqSign() const;
         int const & getGradeReqExe() const;
-        void beSigned(Bureaucrat * bureaucrat);
-        void signForm(Bureaucrat * bureaucrat);
         int checkValue(int const & grade);
-        int checkIfSigned(bool isSigned);
+        int checkValue(int const & grade) const;
         std::string const & getName() const;
+        void beSigned(Bureaucrat & bureaucrat);
         void execute (Bureaucrat const & executor) const;
         virtual void executeSpecialForm(Bureaucrat const & executor) const = 0;
 };

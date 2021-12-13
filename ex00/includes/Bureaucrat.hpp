@@ -27,17 +27,18 @@ class Bureaucrat
         };
     public:
         Bureaucrat();
+         Bureaucrat( std::string const name);
         Bureaucrat( std::string const name, int grade);
         Bureaucrat( Bureaucrat const & rhs);
         Bureaucrat & operator=(Bureaucrat const & rhs);
         ~Bureaucrat();
         std::string const & getName() const;
-        int const & getGrade() const;
+        int getGrade() const;
         void incrementGrade();
         void decrementGrade();
-        void checkValue(int & grade);
+        void checkValue(int grade);
 };
 
-std::ostream & operator<<(std::ostream & o, Bureaucrat* const & rhs);
+std::ostream & operator<<(std::ostream & o, Bureaucrat const & rhs);
 
 #endif

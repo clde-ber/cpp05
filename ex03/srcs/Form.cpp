@@ -166,6 +166,7 @@ void Form::execute(Bureaucrat const & executor) const
 {
     try
     {
+        executor.checkValue(executor.getGrade());
         checkValue(_gradeReqSign);
         checkValue(_gradeReqExe);
         for (int i = 0; i < 3; i++)

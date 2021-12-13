@@ -35,14 +35,14 @@ class Form
         Form( Form const & rhs);
         Form & operator=(Form const & rhs);
         ~Form();
+        std::string const & getName() const;
         bool const & getIfSigned() const;
         int const & getGradeReqSign() const;
         int const & getGradeReqExe() const;
-        void beSigned(Bureaucrat* bureaucrat);
-        void signForm(Bureaucrat* bureaucrat);
+        void beSigned(Bureaucrat & bureaucrat);
         int checkValue(int const & grade);
 };
 
-std::ostream & operator<<(std::ostream & o, Form* const & rhs);
+std::ostream & operator<<(std::ostream & o, Form const & rhs);
 
 #endif

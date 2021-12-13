@@ -79,6 +79,14 @@ void Bureaucrat::checkValue(int grade)
         throw Bureaucrat::GradeTooLowException();
 }
 
+void Bureaucrat::checkValue(int grade) const
+{
+    if (grade < 1)
+        throw Bureaucrat::GradeTooHighException();
+    if (grade > 150)
+        throw Bureaucrat::GradeTooLowException();
+}
+
 void    Bureaucrat::incrementGrade()
 {
     std::cout << this << "Increment : grade [" << _grade << "]->[" << _grade - 1 << "]" << std::endl;
