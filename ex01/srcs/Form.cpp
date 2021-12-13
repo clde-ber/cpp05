@@ -25,7 +25,7 @@ Form::Form(std::string const name, int is_signed, int const gradeReqSign, int co
     std::cout << "- grade requires to execute [" << _gradeReqExe << "]" << std::endl; 
 }
 
-Form::Form( Form const & rhs) : _name(rhs._name), _signed(rhs._signed), _gradeReqSign(rhs._gradeReqSign), _gradeReqExe(rhs._gradeReqExe)
+Form::Form( Form const & rhs) : _signed(rhs._signed), _gradeReqSign(rhs._gradeReqSign), _gradeReqExe(rhs._gradeReqExe)
 {
     std::cout << "copy constructor called : new form created " << std::endl;
     std::cout << "- name [" << _name << "]" << std::endl;
@@ -37,7 +37,7 @@ Form::Form( Form const & rhs) : _name(rhs._name), _signed(rhs._signed), _gradeRe
     std::cout << "- grade requires to execute [" << _gradeReqExe << "]" << std::endl; 
 }
 
-Form const & Form::operator=(Form const & rhs)
+Form & Form::operator=(Form const & rhs)
 {
     std::cout << "Assignation operator called";
     new (this) Form(rhs);
@@ -49,17 +49,17 @@ Form::~Form()
 
 }
 
-int Form::getIfSigned() const
+int const & Form::getIfSigned() const
 {
     return _signed;
 }
 
-int Form::getGradeReqSign() const
+int const & Form::getGradeReqSign() const
 {
     return _gradeReqSign;
 }
 
-int Form::getGradeReqExe() const
+int const & Form::getGradeReqExe() const
 {
     return _gradeReqExe;
 }

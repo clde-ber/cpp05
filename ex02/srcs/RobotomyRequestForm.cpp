@@ -16,7 +16,7 @@ RobotomyRequestForm::RobotomyRequestForm( RobotomyRequestForm const & rhs) : For
 
 }
 
-RobotomyRequestForm const & RobotomyRequestForm::operator=(RobotomyRequestForm const & rhs)
+RobotomyRequestForm & RobotomyRequestForm::operator=(RobotomyRequestForm const & rhs)
 {
     new (this) RobotomyRequestForm(rhs);
     return *this;

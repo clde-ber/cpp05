@@ -13,7 +13,7 @@ Intern::Intern( Intern const & rhs)
     *this = rhs;
 }
 
-Intern const & Intern::operator=(Intern const & rhs)
+Intern & Intern::operator=(Intern const & rhs)
 {
     new (this) Intern(rhs);
     return *this;

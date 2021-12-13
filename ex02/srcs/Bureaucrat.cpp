@@ -15,13 +15,14 @@ Bureaucrat::Bureaucrat( std::string const name, int grade) : _name(name), _grade
 Bureaucrat::Bureaucrat( Bureaucrat const & rhs) : _name(rhs._name), _grade(rhs._grade)
 {
     std::cout << "Constructor by copy called";
+    *this = rhs;
     std::cout << "-> [" << _name << "] " << "bureaucrat is created with grade [" << _grade << "]" << std::endl;
 }
 
-Bureaucrat const & Bureaucrat::operator=(Bureaucrat const & rhs)
+Bureaucrat & Bureaucrat::operator=(Bureaucrat const & rhs)
 {
     std::cout << "Assignation operator called";
-    new (this) Bureaucrat(rhs);
+    _grade = rhs._grade;
     return *this;
 }
 

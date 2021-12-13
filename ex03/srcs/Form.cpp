@@ -24,7 +24,7 @@ Form::Form(std::string const name, int isSigned, int const gradeReqSign, int con
     _f[2] = &PresidentialPardonForm::Form::execute;
 }
 
-Form::Form( Form const & rhs) : _name(rhs._name), _signed(rhs._signed), _gradeReqSign(rhs._gradeReqSign), _gradeReqExe(rhs._gradeReqExe), _target(rhs._target)
+Form::Form( Form const & rhs) : _signed(rhs._signed), _gradeReqSign(rhs._gradeReqSign), _gradeReqExe(rhs._gradeReqExe), _target(rhs._target)
 {
     _formTypes[0] = rhs._formTypes[0];
     _formTypes[1] = rhs._formTypes[1];
@@ -34,7 +34,7 @@ Form::Form( Form const & rhs) : _name(rhs._name), _signed(rhs._signed), _gradeRe
     _f[2] = rhs._f[2];
 }
 
-Form const & Form::operator=(Form const & rhs)
+Form & Form::operator=(Form const & rhs)
 {
     std::cout << "Assignation operator called";
     new (this) Form(rhs);
@@ -46,17 +46,17 @@ Form::~Form()
 
 }
 
-int Form::getIfSigned() const
+int const & Form::getIfSigned() const
 {
     return _signed;
 }
 
-int Form::getGradeReqSign() const
+int const & Form::getGradeReqSign() const
 {
     return _gradeReqSign;
 }
 
-int Form::getGradeReqExe() const
+int const & Form::getGradeReqExe() const
 {
     return _gradeReqExe;
 }

@@ -16,7 +16,7 @@ ShrubberyCreationForm::ShrubberyCreationForm( ShrubberyCreationForm const & rhs)
     _trees = rhs._trees;
 }
 
-ShrubberyCreationForm const & ShrubberyCreationForm::operator=(ShrubberyCreationForm const & rhs)
+ShrubberyCreationForm & ShrubberyCreationForm::operator=(ShrubberyCreationForm const & rhs)
 {
     new (this) ShrubberyCreationForm(rhs);
     return *this;
