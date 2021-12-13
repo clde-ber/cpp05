@@ -1,27 +1,51 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat() : _name(""), _grade(0)
+Bureaucrat::Bureaucrat() : _name("nameless"), _grade(150)
 {
     std::cout << "Constructor by default called";
-    std::cout << "-> [Nameless] bureaucrat is created with greade [null]" << std::endl;
+    try
+    {
+        checkValue(_grade);
+        std::cout << "-> [" << _name << "] bureaucrat is created with grade " << _grade << std::endl;
+    }
+    catch (std::exception &e)
+    {
+        std::cout << e.what() << std::endl;
+    }
 }
 
 Bureaucrat::Bureaucrat( std::string const name, int grade) : _name(name), _grade(grade)
 {
-    std::cout << "Constructor called";
-    std::cout << "-> [" << _name << "] " << "bureaucrat is created with grade [" << _grade << "]" << std::endl;
+    std::cout << "Constructor called" << std::endl;
+    try
+    {
+        checkValue(_grade);
+        std::cout << "-> [" << _name << "] " << "bureaucrat is created with grade [" << _grade << "]" << std::endl;
+    }
+    catch (std::exception &e)
+    {
+        std::cout << e.what() << std::endl;
+    }
 }
 
-Bureaucrat::Bureaucrat( Bureaucrat const & rhs) : _name(rhs._name), _grade(rhs._grade)
+Bureaucrat::Bureaucrat( Bureaucrat const & rhs) : _name(rhs._name)
 {
-    std::cout << "Constructor by copy called";
+    std::cout << "Constructor by copy called" << std::endl;
     *this = rhs;
-    std::cout << "-> [" << _name << "] " << "bureaucrat is created with grade [" << _grade << "]" << std::endl;
+    try
+    {
+        checkValue(_grade);
+        std::cout << "-> [" << _name << "] " << "bureaucrat is created with grade [" << _grade << "]" << std::endl;
+    }
+    catch (std::exception &e)
+    {
+        std::cout << e.what() << std::endl;
+    }
 }
 
 Bureaucrat & Bureaucrat::operator=(Bureaucrat const & rhs)
 {
-    std::cout << "Assignation operator called";
+    std::cout << "Assignation operator called" << std::endl;
     _grade = rhs._grade;
     return *this;
 }

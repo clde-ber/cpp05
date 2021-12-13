@@ -10,7 +10,7 @@ class Form
 {
     private:
         std::string const _name;
-        int _signed;
+        bool _signed;
         int const _gradeReqSign;
         int const _gradeReqExe;
         class GradeTooHighException : public std::exception
@@ -35,7 +35,7 @@ class Form
         Form( Form const & rhs);
         Form & operator=(Form const & rhs);
         ~Form();
-        int const & getIfSigned() const;
+        bool const & getIfSigned() const;
         int const & getGradeReqSign() const;
         int const & getGradeReqExe() const;
         void beSigned(Bureaucrat* bureaucrat);

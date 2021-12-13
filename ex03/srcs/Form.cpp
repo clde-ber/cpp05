@@ -46,7 +46,7 @@ Form::~Form()
 
 }
 
-int const & Form::getIfSigned() const
+bool const & Form::getIfSigned() const
 {
     return _signed;
 }
