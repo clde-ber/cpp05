@@ -35,7 +35,7 @@ class Bureaucrat
         int const & getGrade() const;
         void incrementGrade();
         void decrementGrade();
-        void checkValue(int grade);
+        void checkValue(int & grade);
 };
 
 std::ostream & operator<<(std::ostream & o, Bureaucrat* const & rhs);

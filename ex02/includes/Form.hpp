@@ -52,10 +52,11 @@ class Form
         int const & getGradeReqExe() const;
         void beSigned(Bureaucrat * bureaucrat);
         void signForm(Bureaucrat * bureaucrat);
-        int checkValue(int grade);
+        int checkValue(int const & grade);
         int checkIfSigned(bool isSigned);
         std::string const & getName() const;
-        virtual void execute (Bureaucrat const & executor) const;
+        void execute (Bureaucrat const & executor) const;
+        virtual void executeSpecialForm(Bureaucrat const & executor) const = 0;
 };
 
 std::ostream & operator<<(std::ostream & o, Form const & rhs);

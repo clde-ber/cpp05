@@ -20,7 +20,7 @@ class RobotomyRequestForm : public Form
         RobotomyRequestForm( RobotomyRequestForm const & rhs);
         RobotomyRequestForm & operator=(RobotomyRequestForm const & rhs);
         virtual ~RobotomyRequestForm();
-        void execute (Bureaucrat const & executor) const;
+        void executeSpecialForm(Bureaucrat const & executor) const;
 };
 
 #endif

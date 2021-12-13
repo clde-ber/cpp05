@@ -29,7 +29,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 
 }
 
-void ShrubberyCreationForm::execute (Bureaucrat const & executor) const
+void ShrubberyCreationForm::executeSpecialForm(Bureaucrat const & executor) const
 {
     (void)executor;
     std::ofstream ofs("Trees.txt", std::ofstream::out);

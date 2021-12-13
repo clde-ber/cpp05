@@ -27,7 +27,7 @@ PresidentialPardonForm::~PresidentialPardonForm()
 
 }
 
-void PresidentialPardonForm::execute (Bureaucrat const & executor) const
+void PresidentialPardonForm::executeSpecialForm(Bureaucrat const & executor) const
 {
     std::cout << executor.getName() << " has been forgiven by Zafod Beeblebrox!" << std::endl;
 }

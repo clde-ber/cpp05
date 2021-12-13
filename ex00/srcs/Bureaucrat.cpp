@@ -71,7 +71,7 @@ int const & Bureaucrat::getGrade() const
     return _grade;
 }
 
-void Bureaucrat::checkValue(int grade)
+void Bureaucrat::checkValue(int & grade)
 {
     if (grade < 1)
         throw Bureaucrat::GradeTooHighException();

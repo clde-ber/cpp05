@@ -3,44 +3,74 @@
 
 Form::Form() : _name(""), _signed(0), _gradeReqSign(0), _gradeReqExe(0)
 {
-    std::cout << "constructor by default called : new form created " << std::endl;
-    std::cout << "- name [" << _name << "]" << std::endl;
-    if (_signed)
-        std::cout << "- [signed]" << std::endl;
-    else
-        std::cout << "- [unsigned]" << std::endl;
-    std::cout << "- grade required to sign [" << _gradeReqSign << "]" << std::endl;
-    std::cout << "- grade requires to execute [" << _gradeReqExe << "]" << std::endl; 
+    std::cout << "constructor by default called" << std::endl;
+    try
+    {
+        checkValue(_gradeReqSign);
+        checkValue(_gradeReqExe);
+        std::cout << "New form created" << std::endl; 
+        std::cout << "- name [" << _name << "]" << std::endl;
+        if (_signed)
+            std::cout << "- [signed]" << std::endl;
+        else
+            std::cout << "- [unsigned]" << std::endl;
+        std::cout << "- grade required to sign [" << _gradeReqSign << "]" << std::endl;
+        std::cout << "- grade requires to execute [" << _gradeReqExe << "]" << std::endl; 
+    }
+    catch (std::exception &e)
+    {
+        std::cout << e.what() << std::endl;
+    }
 }
 
 Form::Form(std::string const name, int is_signed, int const gradeReqSign, int const gradeReqExe) : _name(name), _signed(is_signed), _gradeReqSign(gradeReqSign), _gradeReqExe(gradeReqExe)
 {
-    std::cout << "constructor called : new form created " << std::endl;
-    std::cout << "- name [" << _name << "]" << std::endl;
-    if (_signed)
-        std::cout << "- [signed]" << std::endl;
-    else
-        std::cout << "- [unsigned]" << std::endl;
-    std::cout << "- grade required to sign [" << _gradeReqSign << "]" << std::endl;
-    std::cout << "- grade requires to execute [" << _gradeReqExe << "]" << std::endl; 
+    std::cout << "constructor called" << std::endl;
+    try
+    {
+        checkValue(_gradeReqSign);
+        checkValue(_gradeReqExe);
+        std::cout << "New form created" << std::endl; 
+        std::cout << "- name [" << _name << "]" << std::endl;
+        if (_signed)
+            std::cout << "- [signed]" << std::endl;
+        else
+            std::cout << "- [unsigned]" << std::endl;
+        std::cout << "- grade required to sign [" << _gradeReqSign << "]" << std::endl;
+        std::cout << "- grade requires to execute [" << _gradeReqExe << "]" << std::endl; 
+    }
+    catch (std::exception &e)
+    {
+        std::cout << e.what() << std::endl;
+    }
 }
 
 Form::Form( Form const & rhs) : _signed(rhs._signed), _gradeReqSign(rhs._gradeReqSign), _gradeReqExe(rhs._gradeReqExe)
 {
-    std::cout << "copy constructor called : new form created " << std::endl;
-    std::cout << "- name [" << _name << "]" << std::endl;
-    if (_signed)
-        std::cout << "- [signed]" << std::endl;
-    else
-        std::cout << "- [unsigned]" << std::endl;
-    std::cout << "- grade required to sign [" << _gradeReqSign << "]" << std::endl;
-    std::cout << "- grade requires to execute [" << _gradeReqExe << "]" << std::endl; 
+    std::cout << "copy constructor called" << std::endl;
+    try
+    {
+        checkValue(_gradeReqSign);
+        checkValue(_gradeReqExe);
+        std::cout << "New form created" << std::endl; 
+        std::cout << "- name [" << _name << "]" << std::endl;
+        if (_signed)
+            std::cout << "- [signed]" << std::endl;
+        else
+            std::cout << "- [unsigned]" << std::endl;
+        std::cout << "- grade required to sign [" << _gradeReqSign << "]" << std::endl;
+        std::cout << "- grade requires to execute [" << _gradeReqExe << "]" << std::endl; 
+    }
+    catch (std::exception &e)
+    {
+        std::cout << e.what() << std::endl;
+    }
 }
 
 Form & Form::operator=(Form const & rhs)
 {
     std::cout << "Assignation operator called";
-    new (this) Form(rhs);
+    _signed = rhs._signed;
     return *this;
 }
 
@@ -64,7 +94,7 @@ int const & Form::getGradeReqExe() const
     return _gradeReqExe;
 }
 
-int Form::checkValue(int grade)
+int Form::checkValue(int const & grade)
 {
     if (grade < 1)
     {

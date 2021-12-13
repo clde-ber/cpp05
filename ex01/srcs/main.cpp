@@ -25,9 +25,11 @@ int main()
     {
         std::cout << e.what() << std::endl;
     }
+    Form *paper3 = new Form("outoflimits", 1, 2, 151);
     delete test1;
     delete test2;
     delete paper1;
     delete paper2;
+    delete paper3;
     return 0;
 }

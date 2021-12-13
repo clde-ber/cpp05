@@ -27,7 +27,7 @@ RobotomyRequestForm::~RobotomyRequestForm()
 
 }
 
-void RobotomyRequestForm::execute (Bureaucrat const & executor) const
+void RobotomyRequestForm::executeSpecialForm(Bureaucrat const & executor) const
 {
     (void)executor;
     const char* file = "rainSound.mp3";
