@@ -52,3 +52,6 @@ re	:			fclean all
 .PHONY	:		all clean fclean re
 
 -include	$(DEPS)
+
+#unify
+#create correct name for trees.txt
