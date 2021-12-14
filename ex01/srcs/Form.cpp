@@ -96,7 +96,7 @@ void Form::beSigned(Bureaucrat & bureaucrat)
 
 std::ostream & operator<<(std::ostream & o, Form const & rhs)
 {
-    o << "Form signature status : [" << rhs.getIfSigned() << "] | grade required for signing : [" << rhs.getGradeReqSign() \
+    o << "Form signature name [" << rhs.getName() << "] | status : [" << rhs.getIfSigned() << "] | grade required for signing : [" << rhs.getGradeReqSign() \
     << "] | grade required for executing : [" << rhs.getGradeReqExe() << "]";
     return o;
 }

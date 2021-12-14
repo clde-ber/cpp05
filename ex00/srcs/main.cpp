@@ -11,7 +11,14 @@ int main()
     {
         std::cout << e.what() << std::endl;
     }
-    Bureaucrat1.incrementGrade();
+    try
+    {
+        Bureaucrat1.incrementGrade();
+    }
+    catch (std::exception &e)
+    {
+        std::cout << e.what() << std::endl;
+    }
     std::cout << Bureaucrat1 << std::endl;
     
     return 0;
