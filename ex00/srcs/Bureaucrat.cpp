@@ -25,7 +25,6 @@ Bureaucrat::Bureaucrat( Bureaucrat const & rhs)
 {
     std::cout << "Constructor by copy called" << std::endl;
     *this = rhs;
-    checkValue(_grade);
     std::cout << "-> [" << _name << "] " << "bureaucrat is created with grade [" << _grade << "]" << std::endl;
 }
 
