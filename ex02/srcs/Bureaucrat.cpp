@@ -53,17 +53,9 @@ std::string const & Bureaucrat::getName() const
     return _name;
 }
 
-int const & Bureaucrat::getGrade() const
+int Bureaucrat::getGrade() const
 {
     return _grade;
-}
-
-void Bureaucrat::checkValue(int grade)
-{
-    if (grade < 1)
-        throw Bureaucrat::GradeTooHighException();
-    if (grade > 150)
-        throw Bureaucrat::GradeTooLowException();
 }
 
 void Bureaucrat::checkValue(int grade) const

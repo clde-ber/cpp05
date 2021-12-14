@@ -50,8 +50,8 @@ class Form
         bool const & getIfSigned() const;
         int const & getGradeReqSign() const;
         int const & getGradeReqExe() const;
-        void checkValue(int const & grade);
         std::string const & getName() const;
+        void checkValue(int const & grade);
         void beSigned(Bureaucrat & bureaucrat);
         void execute (Bureaucrat const & executor) const;
         virtual void executeSpecialForm(Bureaucrat const & executor) const = 0;

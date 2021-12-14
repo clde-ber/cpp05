@@ -95,21 +95,6 @@ std::string const & Form::getName() const
     return _name;
 }
 
-int Form::checkIfSigned(bool isSigned)
-{
-    if (!isSigned)
-    {
-        throw Form::UnsignedException();
-        return 0;
-    }
-    return 1;
-}
-
-std::string* Form::getFormTypes()
-{
-    return _formTypes;
-}
-
 void Form::execute(Bureaucrat const & executor) const
 {
     if (!_signed)

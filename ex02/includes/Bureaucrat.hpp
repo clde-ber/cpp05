@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include <string>
-
 #include "Form.hpp"
 
 class Bureaucrat
@@ -17,7 +16,7 @@ class Bureaucrat
             public:
                 virtual const char* what() const throw()
                 {
-                    return "Too high grade!";
+                    return "Bureaucrat exception : Too high grade!";
                 }
         };
         class GradeTooLowException : public std::exception
@@ -25,7 +24,7 @@ class Bureaucrat
             public:
                 virtual const char* what() const throw()
                 {
-                    return "Too low grade!";
+                    return "Bureaucrat exception : Too low grade!";
                 }
         };
         class UnsignedException : public std::exception
@@ -44,11 +43,10 @@ class Bureaucrat
         Bureaucrat & operator=(Bureaucrat const & rhs);
         ~Bureaucrat();
         std::string const & getName() const;
-        int const & getGrade() const;
-        void checkValue(int const grade);
-        void checkValue(int const grade) const;
+        int getGrade() const;
         void incrementGrade();
         void decrementGrade();
+        void checkValue(int grade) const;
         void signForm(Form & form);
         void executeForm (Form const & form);
 };
