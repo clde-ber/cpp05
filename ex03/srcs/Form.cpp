@@ -39,14 +39,9 @@ Form::Form( Form const & rhs) : _signed(rhs._signed), _gradeReqSign(rhs._gradeRe
 
 Form & Form::operator=(Form const & rhs)
 {
+    std::cout << "Assignation operator called" << std::endl;
     checkValue(rhs.getGradeReqSign());
     checkValue(rhs.getGradeReqExe());
-    _formTypes[0] = "shrubbery creation";
-    _formTypes[1] = "robotomy request";
-    _formTypes[2] = "presidential pardon";
-    _f[0] = &ShrubberyCreationForm::Form::executeSpecialForm;
-    _f[1] = &RobotomyRequestForm::Form::executeSpecialForm;
-    _f[2] = &PresidentialPardonForm::Form::executeSpecialForm;
     return *this;
 }
 
@@ -108,6 +103,11 @@ int Form::checkIfSigned(bool isSigned)
     return 1;
 }
 
+std::string* Form::getFormTypes()
+{
+    return _formTypes;
+}
+
 void Form::execute(Bureaucrat const & executor) const
 {
     if (!_signed)
@@ -115,6 +115,8 @@ void Form::execute(Bureaucrat const & executor) const
     else if (executor.getGrade() > _gradeReqSign)
         throw GradeTooLowException();
     for (int i = 0; i < 3; i++)
+    {
         if (_name.compare(_formTypes[i]) == 0)
             (this->*_f[i])(executor);
+    }
 }

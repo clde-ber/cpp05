@@ -56,6 +56,7 @@ class Form
         std::string const & getName() const;
         void execute (Bureaucrat const & executor) const;
         virtual void executeSpecialForm(Bureaucrat const & executor) const = 0;
+        std::string* getFormTypes();
 };
 
 std::ostream & operator<<(std::ostream & o, Form const & rhs);

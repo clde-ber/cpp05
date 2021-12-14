@@ -39,8 +39,9 @@ Form::Form( Form const & rhs) : _signed(rhs._signed), _gradeReqSign(rhs._gradeRe
 
 Form & Form::operator=(Form const & rhs)
 {
-    std::cout << "Assignation operator called";
-    new (this) Form(rhs);
+    std::cout << "Assignation operator called" << std::endl;
+    checkValue(rhs.getGradeReqSign());
+    checkValue(rhs.getGradeReqExe());
     return *this;
 }
 

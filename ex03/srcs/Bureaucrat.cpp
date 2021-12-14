@@ -105,8 +105,8 @@ void Bureaucrat::executeForm (Form & form)
 {
     try
     {
-        std::cout << "Bureaucrat [" << _name << "] executes [" << form.getName() << "]" << std::endl;
         form.execute(*this);
+        std::cout << "Bureaucrat [" << _name << "] executes [" << form.getName() << "]" << std::endl;
     }
     catch (std::exception &e)
     {
