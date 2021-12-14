@@ -32,6 +32,12 @@ Form::Form( Form const & rhs) : _signed(rhs._signed), _gradeReqSign(rhs._gradeRe
 {
     checkValue(_gradeReqSign);
     checkValue(_gradeReqExe);
+    _formTypes[0] = rhs._formTypes[0];
+    _formTypes[1] = rhs._formTypes[1];
+    _formTypes[2] = rhs._formTypes[2];
+    _f[0] = rhs._f[0];
+    _f[1] = rhs._f[1];
+    _f[2] = rhs._f[2];
 }
 
 Form & Form::operator=(Form const & rhs)

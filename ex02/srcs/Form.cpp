@@ -32,6 +32,12 @@ Form::Form( Form const & rhs) : _signed(rhs._signed), _gradeReqSign(rhs._gradeRe
 {
     checkValue(_gradeReqSign);
     checkValue(_gradeReqExe);
+    _formTypes[0] = rhs._formTypes[0];
+    _formTypes[1] = rhs._formTypes[1];
+    _formTypes[2] = rhs._formTypes[2];
+    _f[0] = rhs._f[0];
+    _f[1] = rhs._f[1];
+    _f[2] = rhs._f[2];
 }
 
 Form & Form::operator=(Form const & rhs)
@@ -96,6 +102,8 @@ void Form::execute(Bureaucrat const & executor) const
     else if (executor.getGrade() > _gradeReqSign)
         throw GradeTooLowException();
     for (int i = 0; i < 3; i++)
+    {
         if (_name.compare(_formTypes[i]) == 0)
             (this->*_f[i])(executor);
+    }
 }
