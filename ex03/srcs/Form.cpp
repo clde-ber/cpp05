@@ -6,7 +6,6 @@
 
 Form::Form() : _name("random form"), _signed(0), _gradeReqSign(150), _gradeReqExe(150), _target("random target")
 {
-    std::cout << "constructor called" << std::endl;
     checkValue(_gradeReqSign);
     checkValue(_gradeReqExe);
     _formTypes[0] = "shrubbery creation";
@@ -19,7 +18,6 @@ Form::Form() : _name("random form"), _signed(0), _gradeReqSign(150), _gradeReqEx
 
 Form::Form(std::string const name, int isSigned, int const gradeReqSign, int const gradeReqExe, std::string const target) : _name(name), _signed(isSigned), _gradeReqSign(gradeReqSign), _gradeReqExe(gradeReqExe), _target(target)
 {
-    std::cout << "constructor called" << std::endl;
     checkValue(_gradeReqSign);
     checkValue(_gradeReqExe);
     _formTypes[0] = "shrubbery creation";
@@ -32,14 +30,12 @@ Form::Form(std::string const name, int isSigned, int const gradeReqSign, int con
 
 Form::Form( Form const & rhs) : _signed(rhs._signed), _gradeReqSign(rhs._gradeReqSign), _gradeReqExe(rhs._gradeReqExe), _target(rhs._target)
 {
-    std::cout << "constructor called" << std::endl;
     checkValue(_gradeReqSign);
     checkValue(_gradeReqExe);
 }
 
 Form & Form::operator=(Form const & rhs)
 {
-    std::cout << "Assignation operator called" << std::endl;
     checkValue(rhs.getGradeReqSign());
     checkValue(rhs.getGradeReqExe());
     return *this;
@@ -84,7 +80,7 @@ void Form::beSigned(Bureaucrat & bureaucrat)
 std::ostream & operator<<(std::ostream & o, Form const & rhs)
 {
     o << "Form signature status : [" << rhs.getIfSigned() << "] | grade required for signing : [" << rhs.getGradeReqSign() \
-    << "] | grade required for executing : " << rhs.getGradeReqExe();
+    << "] | grade required for executing : [" << rhs.getGradeReqExe() << "]";
     return o;
 }
 

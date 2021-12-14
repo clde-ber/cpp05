@@ -78,19 +78,12 @@ int const & Form::getGradeReqExe() const
     return _gradeReqExe;
 }
 
-int Form::checkValue(int const & grade)
+void Form::checkValue(int const & grade)
 {
     if (grade < 1)
-    {
         throw Form::GradeTooHighException();
-        return 0;
-    }
     if (grade > 150)
-    {
         throw Form::GradeTooLowException();
-        return 0;
-    }
-    return 1; 
 }
 
 void Form::beSigned(Bureaucrat & bureaucrat)
@@ -104,6 +97,6 @@ void Form::beSigned(Bureaucrat & bureaucrat)
 std::ostream & operator<<(std::ostream & o, Form const & rhs)
 {
     o << "Form signature status : [" << rhs.getIfSigned() << "] | grade required for signing : [" << rhs.getGradeReqSign() \
-    << "] | grade required for executing : " << rhs.getGradeReqExe();
+    << "] | grade required for executing : [" << rhs.getGradeReqExe() << "]";
     return o;
 }

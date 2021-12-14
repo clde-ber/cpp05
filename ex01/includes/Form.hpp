@@ -40,7 +40,7 @@ class Form
         int const & getGradeReqSign() const;
         int const & getGradeReqExe() const;
         void beSigned(Bureaucrat & bureaucrat);
-        int checkValue(int const & grade);
+        void checkValue(int const & grade);
 };
 
 std::ostream & operator<<(std::ostream & o, Form const & rhs);

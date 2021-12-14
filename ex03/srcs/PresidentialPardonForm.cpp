@@ -1,7 +1,7 @@
 #include "PresidentialPardonForm.hpp"
 #include "Bureaucrat.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm() : Form("presidential pardon", 0, 25, 5, "no target")
+PresidentialPardonForm::PresidentialPardonForm() : Form("presidential pardon", 0, 25, 5, "random target")
 {
 
 }

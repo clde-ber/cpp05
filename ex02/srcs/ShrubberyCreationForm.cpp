@@ -1,7 +1,7 @@
 #include "ShrubberyCreationForm.hpp"
 #include "Bureaucrat.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm() : Form("shrubbery creation", 0, 145, 137, "no target")
+ShrubberyCreationForm::ShrubberyCreationForm() : Form("shrubbery creation", 0, 145, 137, "random target")
 {
     _trees = "                                   _\\ |/ /   _\\ |/ /   _\\ |/ /      \\/\\|//_   \\/\\|//_   \\/\\|//_      _\\/|//_   _\\/|//_   _\\/|//_        \\|/       \\|/       \\|/           |         |         |            |         |         |                                        ";
 

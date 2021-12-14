@@ -38,7 +38,7 @@ class Form
             public:
                 virtual const char* what() const throw()
                 {
-                    return "Form exception : This form cannot be executed because it is not signed!";
+                    return "Form exception : Form not signed!";
                 }
         };
     public:

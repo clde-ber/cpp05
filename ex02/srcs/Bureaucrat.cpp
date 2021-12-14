@@ -44,7 +44,7 @@ Bureaucrat::~Bureaucrat()
 
 std::ostream & operator<<(std::ostream & o, Bureaucrat const & rhs)
 {
-    o << "Bureaucrat name : " << rhs.getName() << " | grade : " << rhs.getGrade() << std::endl;
+    o << "Bureaucrat name : " << rhs.getName() << " | grade : " << rhs.getGrade();
     return o;
 }
 
@@ -101,7 +101,7 @@ void Bureaucrat::signForm(Form & form)
     }
 }
 
-void Bureaucrat::executeForm (Form & form)
+void Bureaucrat::executeForm (Form const & form)
 {
     try
     {

@@ -9,7 +9,7 @@ LIST	=	main \
 			ShrubberyCreationForm \
 			
 HEADER	=	-I includes/
-CFLAGS	=	-Wall -Wextra -Werror -MMD -std=c++98 -g3 -fsanitize=address
+CFLAGS	=	-Wall -Wextra -Werror -MMD -std=c++98
 CC		=	clang++
 
 S_DIR	=	srcs/

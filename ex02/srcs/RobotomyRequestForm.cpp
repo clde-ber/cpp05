@@ -1,7 +1,7 @@
 #include "RobotomyRequestForm.hpp"
 #include "Bureaucrat.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm() : Form("robotomy request", 0, 72, 45, "no target"),_target("no target")
+RobotomyRequestForm::RobotomyRequestForm() : Form("robotomy request", 0, 72, 45, "random target"),_target("random target")
 {
     
     srand(time(NULL));

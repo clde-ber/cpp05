@@ -50,7 +50,7 @@ class Bureaucrat
         void incrementGrade();
         void decrementGrade();
         void signForm(Form & form);
-        void executeForm (Form & form);
+        void executeForm (Form const & form);
 };
 
 std::ostream & operator<<(std::ostream & o, Bureaucrat const & rhs);
