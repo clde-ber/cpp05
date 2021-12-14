@@ -50,10 +50,8 @@ class Form
         bool const & getIfSigned() const;
         int const & getGradeReqSign() const;
         int const & getGradeReqExe() const;
-        void beSigned(Bureaucrat * bureaucrat);
-        void signForm(Bureaucrat * bureaucrat);
-        int checkValue(int const & grade);
-        int checkValue(int const & grade) const;
+        void beSigned(Bureaucrat & bureaucrat);
+        void checkValue(int const & grade);
         int checkIfSigned(bool isSigned);
         std::string const & getName() const;
         void execute (Bureaucrat const & executor) const;

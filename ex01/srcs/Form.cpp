@@ -92,6 +92,7 @@ int Form::checkValue(int const & grade)
     }
     return 1; 
 }
+
 void Form::beSigned(Bureaucrat & bureaucrat)
 {
     if (bureaucrat.getGrade() <= _gradeReqSign)

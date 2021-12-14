@@ -2,14 +2,14 @@
 
 Bureaucrat::Bureaucrat() : _name("nameless"), _grade(150)
 {
-    std::cout << "Constructor by default called";
+    std::cout << "Constructor by default called" << std::endl;
     checkValue(_grade);
     std::cout << "-> [" << _name << "] bureaucrat is created with grade " << _grade << std::endl;
 }
 
 Bureaucrat::Bureaucrat(std::string const name) : _name(name), _grade(150)
 {
-    std::cout << "Constructor called";
+    std::cout << "Constructor called" << std::endl;
     checkValue(_grade);
     std::cout << "-> [" << _name << "] bureaucrat is created with grade " << _grade << std::endl;
 }

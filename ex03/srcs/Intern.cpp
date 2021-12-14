@@ -10,12 +10,14 @@ Intern::Intern( void )
 
 Intern::Intern( Intern const & rhs)
 {
-    *this = rhs;
+    (void)rhs;
+    new (this) Intern;
 }
 
 Intern & Intern::operator=(Intern const & rhs)
 {
-    new (this) Intern(rhs);
+    (void)rhs;
+    new (this) Intern;
     return *this;
 }
 

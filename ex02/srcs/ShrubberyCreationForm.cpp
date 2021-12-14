@@ -31,8 +31,10 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 
 void ShrubberyCreationForm::executeSpecialForm(Bureaucrat const & executor) const
 {
-    (void)executor;
-    std::ofstream ofs("Trees.txt", std::ofstream::out);
+    std::string file;
+    file += executor.getName();
+    file += "_shrubbery";
+    std::ofstream ofs(file.c_str(), std::ofstream::out);
     
     for (int i = 0; i < 8; i++)
     {

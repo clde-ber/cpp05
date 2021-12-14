@@ -37,6 +37,7 @@ class Bureaucrat
         };
     public:
         Bureaucrat();
+        Bureaucrat( std::string const name);
         Bureaucrat( std::string const name, int grade);
         Bureaucrat( Bureaucrat const & rhs);
         Bureaucrat & operator=(Bureaucrat const & rhs);
@@ -47,7 +48,8 @@ class Bureaucrat
         void checkValue(int const grade);
         void    incrementGrade();
         void    decrementGrade();
-        void executeForm (Form const & form);
+        void signForm(Form & form);
+        void executeForm (Form & form);
 };
 
 std::ostream & operator<<(std::ostream & o, Bureaucrat const & rhs);

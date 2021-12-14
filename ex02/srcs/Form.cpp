@@ -28,7 +28,6 @@ Form::Form(std::string const name, int isSigned, int const gradeReqSign, int con
     _f[0] = &ShrubberyCreationForm::Form::executeSpecialForm;
     _f[1] = &RobotomyRequestForm::Form::executeSpecialForm;
     _f[2] = &PresidentialPardonForm::Form::executeSpecialForm;
-    std::cout << "New form created" << std::endl;
 }
 
 Form::Form( Form const & rhs) : _signed(rhs._signed), _gradeReqSign(rhs._gradeReqSign), _gradeReqExe(rhs._gradeReqExe), _target(rhs._target)
@@ -36,19 +35,12 @@ Form::Form( Form const & rhs) : _signed(rhs._signed), _gradeReqSign(rhs._gradeRe
     std::cout << "constructor called" << std::endl;
     checkValue(_gradeReqSign);
     checkValue(_gradeReqExe);
-    std::cout << "New form created" << std::endl;
 }
 
 Form & Form::operator=(Form const & rhs)
 {
     std::cout << "Assignation operator called";
-    _signed = rhs._signed;
-    _formTypes[0] = rhs._formTypes[0];
-    _formTypes[1] = rhs._formTypes[1];
-    _formTypes[2] = rhs._formTypes[2];
-    _f[0] = rhs._f[0];
-    _f[1] = rhs._f[1];
-    _f[2] = rhs._f[2];
+    new (this) Form(rhs);
     return *this;
 }
 
@@ -72,34 +64,12 @@ int const & Form::getGradeReqExe() const
     return _gradeReqExe;
 }
 
-int Form::checkValue(int const & grade)
+void Form::checkValue(int const & grade)
 {
     if (grade < 1)
-    {
         throw Form::GradeTooHighException();
-        return 0;
-    }
     if (grade > 150)
-    {
         throw Form::GradeTooLowException();
-        return 0;
-    }
-    return 1; 
-}
-
-int Form::checkValue(int const & grade) const
-{
-    if (grade < 1)
-    {
-        throw Form::GradeTooHighException();
-        return 0;
-    }
-    if (grade > 150)
-    {
-        throw Form::GradeTooLowException();
-        return 0;
-    }
-    return 1; 
 }
 
 void Form::beSigned(Bureaucrat & bureaucrat)
